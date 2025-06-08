@@ -10,15 +10,18 @@ start-frontend:
 start-backend:
 	npx start-server -s ./frontend/dist
 
-deploy:
-	git push heroku main
-
 start:
 	make start-backend
 
 develop:
-	make start-backend & make start-frontend
+	make start-backend && make start-frontend
 
 build:
 	rm -rf frontend/dist
 	npm run build
+
+f-kill:
+	pkill -f npm
+
+b-kill:
+	pkill -f start-server
