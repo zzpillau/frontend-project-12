@@ -1,5 +1,6 @@
 import React from 'react'
 
+import LoginForm from './LoginForm.jsx'
 import reactLogo from '../assets/react.svg'
 
 const LoginPage = () => {
@@ -9,7 +10,9 @@ const LoginPage = () => {
       <h1>
         Hi! Im LOGIN PAGE
       </h1>
-      <button className="btn btn-primary">Im Bootstrap Button</button>
+      <hr />
+      <LoginForm />
+      <hr />
     </>
   )
 }
