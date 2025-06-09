@@ -19,9 +19,3 @@ develop:
 build:
 	rm -rf frontend/dist
 	npm run build
-
-f-kill:
-	pkill -f npm
-
-b-kill:
-	pkill -f start-server
