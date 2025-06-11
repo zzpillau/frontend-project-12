@@ -1,19 +1,21 @@
 import React from 'react'
 
-import LoginForm from './LoginForm.jsx'
-import reactLogo from '../assets/react.svg'
+import LoginForm from './forms/LoginForm.jsx'
+// import reactLogo from '../assets/react.svg'
+import tomato from '../assets/tomato.png'
 
 const LoginPage = () => {
   return (
-    <>
-      <img src={reactLogo} alt="reactLogo" />
-      <h1>
-        Hi! Im LOGIN PAGE
-      </h1>
-      <hr />
-      <LoginForm />
-      <hr />
-    </>
+    <div className="row justify-content-center align-content-center h-100">
+      <div className="container-fluid">
+        <div className="row justify-content-center pt-5">
+          <div className="card-body p-5">
+            <img src={tomato} alt="tomatoLogo" className='logo logo-spin'/>
+            <LoginForm />
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 
