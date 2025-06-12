@@ -16,6 +16,9 @@ import { Button, Form } from 'react-bootstrap'
 
 const LoginForm = () => {
 
+    const [authFailed, setAuthFailed] = useState(false)
+
+
   const auth = useContext(AuthContext)
 
   const dispatch = useDispatch()
@@ -34,23 +37,30 @@ const LoginForm = () => {
       password: ''
     },
     onSubmit: async (values) => {
-      formik.setSubmitting(false)
-
+      setAuthFailed(false)
       console.log('Something to submit', values)
 
-      const {data} = await axios.post(routes.login(), {...values})
+      try {
 
-      const token = data.token
-      localStorage.setItem(`authToken`, token)
+        const {data} = await axios.post(routes.login(), {...values})
 
-      dispatch(setCredentials(data))
+        const token = data.token
+        localStorage.setItem(`authToken`, token)
 
-      auth.logIn()
+        dispatch(setCredentials(data))
 
-      console.log('location.state', location.state)
+        auth.logIn()
 
-      const from = location.state?.from?.pathname || '/';
-      navigate(from)
+        console.log('location.state', location.state)
+
+        const from = location.state?.from?.pathname || '/';
+        navigate(from)
+      } catch (error) {
+        formik.setSubmitting(false)      
+        console.error('Authentification error', error)
+        // formik.setErrors({ auth: 'the username or password is incorrect'})
+        setAuthFailed(true)
+      }
     }
   })
 
@@ -64,6 +74,7 @@ const LoginForm = () => {
             placeholder="username"
             name="username"
             id="username"
+            isInvalid={authFailed}
             autoComplete="username"
             required
             ref={inputRef}
@@ -78,11 +89,12 @@ const LoginForm = () => {
             placeholder="password"
             name="password"
             id="password"
+            isInvalid={authFailed}
             autoComplete="current-password"
             required
           />
           <Form.Label htmlFor="password">Пароль</Form.Label>
-          <Form.Control.Feedback type="invalid">the username or password is incorrect</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">Неверные имя пользователя или пароль</Form.Control.Feedback>
         </Form.Group>
         <Button type="submit" variant="outline-primary" className="w-100 ">Submit</Button>
     </Form>
