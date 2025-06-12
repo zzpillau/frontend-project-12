@@ -14,8 +14,15 @@ start:
 	make start-backend
 
 develop:
-	make start-backend && make start-frontend
+	make start-backend & make start-frontend
 
 build:
 	rm -rf frontend/dist
 	npm run build
+
+
+kill-5001:
+	bkill -9 $(lsof -t -i :5001)
+
+kill-5002:
+	bkill -9 $(lsof -t -i :5002)

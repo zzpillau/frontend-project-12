@@ -1,7 +1,9 @@
 import React from 'react'
 import axios from 'axios'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useContext, useState } from 'react'
 import { useDispatch } from 'react-redux'
+import AuthContext from '../../contexts/index.js'
+
 
 import { setCredentials } from '../../slices/authSlice.js'
 
@@ -13,6 +15,8 @@ import { Button, Form } from 'react-bootstrap'
 
 
 const LoginForm = () => {
+
+  const auth = useContext(AuthContext)
 
   const dispatch = useDispatch()
   const location = useLocation()
@@ -37,12 +41,16 @@ const LoginForm = () => {
       const {data} = await axios.post(routes.login(), {...values})
 
       const token = data.token
-      localStorage.setItem(`authToken-${username}`, token)
+      localStorage.setItem(`authToken`, token)
 
       dispatch(setCredentials(data))
 
-      // const {from} = location.state
-      navigate('/')
+      auth.logIn()
+
+      console.log('location.state', location.state)
+
+      const from = location.state?.from?.pathname || '/';
+      navigate(from)
     }
   })
 

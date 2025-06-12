@@ -1,10 +1,10 @@
 import React from 'react'
 
 import LoginForm from './forms/LoginForm.jsx'
-// import reactLogo from '../assets/react.svg'
 import tomato from '../assets/tomato.png'
 
 const LoginPage = () => {
+
   return (
     <div className="row justify-content-center align-content-center h-100">
       <div className="container-fluid">
