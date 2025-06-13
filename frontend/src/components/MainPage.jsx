@@ -1,19 +1,14 @@
-import {React, useEffect} from 'react'
-
-import axios from 'axios'
-import routes from '../routes/routes.js'
+import { React, useEffect } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 
 import { fetchChannels } from '../slices/channelsSlice.js'
 import { fetchMessages } from '../slices/messagesSlice.js'
 
-
 import { selectAllChannels } from '../slices/channelsSlice.js'
 import { selectAllMessages } from '../slices/messagesSlice.js'
 
 const MainPage = () => {
-
   const dispatch = useDispatch()
 
   useEffect(() => {
