@@ -6,8 +6,8 @@ import { Navbar, Container } from 'react-bootstrap'
 import AuthButton from './AuthButton.jsx'
 
 const Header = () => {
-  const { pathname } = useLocation();
-  const showLogin = pathname === '/';
+  const { pathname } = useLocation()
+  const showLogin = pathname === '/'
 
   return (
     <Navbar className="shadow-sm navbar navbar-expand-lg navbar-light bg-white">

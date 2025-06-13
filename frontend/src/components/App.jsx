@@ -11,7 +11,6 @@ import LoginPage from './LoginPage.jsx'
 import Page404 from './Page404.jsx'
 import MainPage from './MainPage.jsx'
 
-
 import Layout from './Layout.jsx'
 
 import '../scss/App.scss'
@@ -61,16 +60,17 @@ const App = () => {
       <Provider store={store}>
         <BrowserRouter>
           <Routes>
-            <Route path='/' element={<Layout />}>
-                <Route path="*" element={<Page404 />} />
-                <Route
-                  index element={(
-                    <PrivateRoute>
-                      <MainPage />
-                    </PrivateRoute>
-                  )}
-                />
-                <Route path="login" element={<LoginPage />} />
+            <Route path="/" element={<Layout />}>
+              <Route path="*" element={<Page404 />} />
+              <Route
+                index
+                element={(
+                  <PrivateRoute>
+                    <MainPage />
+                  </PrivateRoute>
+                )}
+              />
+              <Route path="login" element={<LoginPage />} />
             </Route>
           </Routes>
         </BrowserRouter>
