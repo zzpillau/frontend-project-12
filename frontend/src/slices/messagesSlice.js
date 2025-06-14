@@ -3,12 +3,13 @@ import axios from 'axios'
 
 import routes from '../routes/routes.js'
 
-import headers from '../utils/buildAuthHeader.js'
+import getHeaders from '../utils/buildAuthHeader.js'
 
 const fetchMessages = createAsyncThunk(
   'messages/fetchMessages',
   async () => {
-    const response = await axios.get(routes.messages(), headers)
+    console.log('fetchMessages')
+    const response = await axios.get(routes.messages(), getHeaders(localStorage.getItem('authToken')))
     return response.data
   },
 )

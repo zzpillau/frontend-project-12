@@ -3,12 +3,15 @@ import axios from 'axios'
 
 import routes from '../routes/routes.js'
 
-import headers from '../utils/buildAuthHeader.js'
+import getHeaders from '../utils/buildAuthHeader.js'
+
 
 const fetchChannels = createAsyncThunk(
   'channels/fetchChannels',
   async () => {
-    const response = await axios.get(routes.channels(), headers)
+    const headers = getHeaders()
+    console.log('fetchChannels')
+    const response = await axios.get(routes.channels(), getHeaders(localStorage.getItem('authToken')))
     return response.data
   },
 )
@@ -18,7 +21,7 @@ const channelsAdapter = createEntityAdapter()
 const initialState = channelsAdapter.getInitialState({
   loading: false,
   error: null,
-  activeChannel: '1',
+  activeChannel: null,
 })
 
 const channelsSlice = createSlice({
@@ -41,8 +44,9 @@ const channelsSlice = createSlice({
         state.error = null
       })
       .addCase(fetchChannels.fulfilled, (state, { payload }) => {
-        state.loading = false
         channelsAdapter.setAll(state, payload)
+        state.activeChannel = payload[0].id
+        state.loading = false
       })
       .addCase(fetchChannels.rejected, (state, { error }) => {
         state.loading = false

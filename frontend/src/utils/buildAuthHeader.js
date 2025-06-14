@@ -1,7 +1,8 @@
-const token = localStorage.getItem('authToken')
-
-export default {
+const getHeaders = (token) => ({
   headers: {
     Authorization: `Bearer ${token}`,
   },
-}
+})
+
+
+export default getHeaders
