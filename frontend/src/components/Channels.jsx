@@ -2,22 +2,15 @@ import React from 'react'
 import cn from 'classnames'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { setActiveChannel } from '../slices/channelsSlice.js'
+import { setActiveChannelId } from '../slices/channelsSlice.js'
 import { selectActiveChannelId } from '../slices/channelsSlice.js'
-import useChannel from '../hooks/useChannel.js'
 
 const Channels = ({ items }) => {
   const dispatch = useDispatch()
 
-  const activeChannelId = useSelector(selectActiveChannelId)
-
-  const activeChannel = useChannel(activeChannelId)
-
-  console.log('activeChannel', activeChannel)
-
   const handleClick = (e) => {
-    console.log('CLICK', e.target)
-    dispatch(setActiveChannel(e.target.id))
+    console.log('CLICK', e.target.id)
+    dispatch(setActiveChannelId(e.target.id))
   }
 
   return (
@@ -30,7 +23,7 @@ const Channels = ({ items }) => {
         console.log('channel.id', channel.id)
 
         const classes = cn('w-100', 'rounded-0', 'text-start', 'btn', {
-          'btn-secondary': channel.id === activeChannelId,
+          'btn-secondary': channel.id === useSelector(selectActiveChannelId),
         })
 
         return (

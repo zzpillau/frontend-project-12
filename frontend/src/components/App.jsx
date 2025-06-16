@@ -7,9 +7,9 @@ import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-route
 import { Provider } from 'react-redux'
 import store from '../slices/index.js'
 
-import LoginPage from './LoginPage.jsx'
-import Page404 from './Page404.jsx'
-import MainPage from './MainPage.jsx'
+import LoginPage from './pages/LoginPage.jsx'
+import Page404 from './pages/Page404.jsx'
+import MainPage from './pages/MainPage.jsx'
 
 import Layout from './Layout.jsx'
 

@@ -3,17 +3,15 @@
 
 // возвращает компонент
 
-
 // app.post('/api/v1/messages', { preValidation: [app.authenticate] }, async (req, reply) => {
-    // const message = req.body;
-    // const messageWithId = {
-    //   ...message,
-    //   removable: true,
-    //   id: getNextId(),
-    // };
+// const message = req.body;
+// const messageWithId = {
+//   ...message,
+//   removable: true,
+//   id: getNextId(),
+// };
 
 // app.io.emit('newMessage', messageWithId);
-
 
 // app.patch('/api/v1/messages/:messageId', { preValidation: [app.authenticate] }, async (req, reply) => {
 //     const { messageId } = req.params;
