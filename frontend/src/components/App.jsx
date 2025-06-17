@@ -5,7 +5,7 @@ import AuthContext from '../contexts/index.js'
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom'
 
 import { Provider } from 'react-redux'
-import store from '../slices/index.js'
+import store from '../store/index.js'
 
 import LoginPage from './pages/LoginPage.jsx'
 import Page404 from './pages/Page404.jsx'

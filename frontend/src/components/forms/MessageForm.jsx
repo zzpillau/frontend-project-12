@@ -62,7 +62,12 @@ const MessageForm = () => {
           required
           ref={inputRef}
         />
-        <Button type="submit" variant="outline" className="btn btn-group-vertical">
+        <Button
+         type="submit"
+         ariant="outline"
+         className="btn btn-group-vertical"
+         disabled={formik.isSubmitting}
+         >
           <ArrowRightSquare size={20} />
           <span className="visually-hidden">Отправить</span>
         </Button>

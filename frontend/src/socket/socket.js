@@ -1,7 +1,26 @@
-// socet
-// i18n
+import { io } from 'socket.io-client'
+import { messagesApi } from '../api/messagesApi.js'
+import { messageUpdateHelpers } from '../api/messagesApi.js'
 
-// возвращает компонент
+const initSocket = (store) => {
+  const socket = io()
+
+  socket.on('newMessage', (payload) => {
+    store.dispatch(
+      messagesApi.util.updateQueryData('getMessages', undefined, messageUpdateHelpers.addMessage(payload))
+    )
+  })
+
+  // socket.on('removeMessage', (payload) => {
+  //   store.dispatch(
+  //     messagesApi.util.updateQueryData('getMessages', undefined, messageUpdateHelpers.removeMessage(payload.id))
+  //   )
+  // })
+}
+
+export default initSocket
+
+
 
 // app.post('/api/v1/messages', { preValidation: [app.authenticate] }, async (req, reply) => {
 // const message = req.body;

@@ -1,4 +1,4 @@
-import { React, useEffect } from 'react'
+import { React } from 'react'
 
 import { useSelector } from 'react-redux'
 
@@ -20,6 +20,10 @@ const MainPage = () => {
   const activeChannelId = useSelector(selectActiveChannelId)
 
   const activeChannel = channels?.find(c => c.id === activeChannelId)
+
+  const activeChannelMessages = messages.filter(m => m.channelId === activeChannelId) ?? []
+
+  const messagesCount = activeChannelMessages?.length || 0
 
   if (isLoadingChannels) {
     return <div className="alert alert-info">Loading channels...</div>
@@ -62,9 +66,13 @@ const MainPage = () => {
                     {activeChannel?.name}
                   </b>
                 </p>
-                <span className="text-muted">0 сообщений</span>
+                <span className="text-muted">
+                  {messagesCount}
+                  {' '}
+                  сообщений
+                </span>
               </div>
-              <Messages items={messages} channelId={activeChannelId} />
+              <Messages items={messages} />
               <div className="mt-auto px-5 py-3">
                 <MessageForm />
               </div>
