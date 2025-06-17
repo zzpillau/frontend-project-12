@@ -34,19 +34,16 @@ const LoginForm = () => {
     },
     onSubmit: async (values) => {
       setAuthFailed(false)
-      console.log('Something to submit', values)
 
       try {
         const { data } = await axios.post(routes.login(), { ...values })
 
-        const token = data.token
-        localStorage.setItem(`authToken`, token)
+        localStorage.setItem(`authToken`, data.token)
+        localStorage.setItem('username', data.username)
 
-        dispatch(setCredentials(data))
+        dispatch(setCredentials({ username: data.username }))
 
         auth.logIn()
-
-        console.log('location.state', location.state)
 
         const from = location.state?.from?.pathname || '/'
         navigate(from)
@@ -54,7 +51,6 @@ const LoginForm = () => {
       catch (error) {
         formik.setSubmitting(false)
         console.error('Authentification error', error)
-        // formik.setErrors({ auth: 'the username or password is incorrect'})
         setAuthFailed(true)
       }
     },

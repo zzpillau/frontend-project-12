@@ -45,8 +45,8 @@ const PrivateRoute = ({ children }) => {
   const location = useLocation()
 
   if (auth.loading) {
-    console.log('Loading')
-    return <div>Loading...</div>
+    console.log('authorization in process')
+    return <div className="alert alert-info">Authorization in process...</div>
   }
 
   return (

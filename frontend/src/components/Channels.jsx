@@ -19,9 +19,6 @@ const Channels = ({ items }) => {
       className="nav flex-column nav-pills nav-fill px-2 mb-3 overflow-auto h-100 d-block"
     >
       {items.map((channel) => {
-        console.log('channel', channel)
-        console.log('channel.id', channel.id)
-
         const classes = cn('w-100', 'rounded-0', 'text-start', 'btn', {
           'btn-secondary': channel.id === useSelector(selectActiveChannelId),
         })
