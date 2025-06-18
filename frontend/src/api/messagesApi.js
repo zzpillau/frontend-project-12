@@ -41,12 +41,12 @@ export const messagesApi = createApi({
 })
 
 const messageUpdateHelpers = {
-  addMessage: (message) => (draft) => {
+  addMessage: message => (draft) => {
     draft.push(message)
   },
-  // removeMessage: (id) => (draft) => {
-  //   return draft.filter((msg) => msg.id !== id)
-  // },
+  removeMessage: id => (draft) => {
+    return draft.filter(msg => msg.id !== id)
+  },
   // editMessage
 }
 

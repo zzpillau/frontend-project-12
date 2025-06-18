@@ -35,8 +35,6 @@ export const channelsApi = createApi({
   }),
 })
 
-
-
 export const {
   useGetChannelsQuery,
   useGetChannelByIdQuery,

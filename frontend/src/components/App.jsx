@@ -4,9 +4,6 @@ import AuthContext from '../contexts/index.js'
 
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom'
 
-import { Provider } from 'react-redux'
-import store from '../store/index.js'
-
 import LoginPage from './pages/LoginPage.jsx'
 import Page404 from './pages/Page404.jsx'
 import MainPage from './pages/MainPage.jsx'
@@ -57,24 +54,22 @@ const PrivateRoute = ({ children }) => {
 const App = () => {
   return (
     <AuthProvider>
-      <Provider store={store}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route path="*" element={<Page404 />} />
-              <Route
-                index
-                element={(
-                  <PrivateRoute>
-                    <MainPage />
-                  </PrivateRoute>
-                )}
-              />
-              <Route path="login" element={<LoginPage />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </Provider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route path="*" element={<Page404 />} />
+            <Route
+              index
+              element={(
+                <PrivateRoute>
+                  <MainPage />
+                </PrivateRoute>
+              )}
+            />
+            <Route path="login" element={<LoginPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </AuthProvider>
   )
 }

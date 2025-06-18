@@ -1,21 +1,19 @@
 // i18n
 // socket
 // возвращает компонент
-import React from 'react';
-import { Provider } from 'react-redux';
+import React from 'react'
+import { Provider } from 'react-redux'
 
+import store from './store'
 
-import store from "./store";
-
-import initSocket from "./socket/socket.js";
+import initSocket from './socket/socket.js'
 
 import App from '../src/components/App.jsx'
 
 const init = () => {
-
   initSocket(store)
 
-  return(
+  return (
     <React.StrictMode>
       <Provider store={store}>
         <App />
@@ -23,14 +21,6 @@ const init = () => {
     </React.StrictMode>
 
   )
-
 }
 
 export default init
-
-
-
-
-
-
-

@@ -12,26 +12,20 @@ import MessageForm from '../forms/MessageForm.jsx'
 
 import { Button } from 'react-bootstrap'
 import { PlusSquare } from 'react-bootstrap-icons'
+import ActiveChannelInfo from '../ActiveChannelInfo.jsx'
 
 const MainPage = () => {
   const { data: channels = [], isLoading: isLoadingChannels, error: channelsError } = useGetChannelsQuery()
-  const { data: messages = [], isLoading: isLoadingMessages } = useGetMessagesQuery()
 
   const activeChannelId = useSelector(selectActiveChannelId)
 
   const activeChannel = channels?.find(c => c.id === activeChannelId)
 
-  const activeChannelMessages = messages.filter(m => m.channelId === activeChannelId) ?? []
-
-  const messagesCount = activeChannelMessages?.length || 0
 
   if (isLoadingChannels) {
     return <div className="alert alert-info">Loading channels...</div>
   }
 
-  if (isLoadingMessages) {
-    return <div className="alert alert-info">Loading messages...</div>
-  }
 
   if (channelsError) {
     return (
@@ -59,20 +53,8 @@ const MainPage = () => {
           </div>
           <div className="col p-0 h-100">
             <div className="d-flex flex-column h-100">
-              <div className="bg-light mb-4 p-3 shadow-sm small text-start">
-                <p className="m-0">
-                  <b>
-                    #
-                    {activeChannel?.name}
-                  </b>
-                </p>
-                <span className="text-muted">
-                  {messagesCount}
-                  {' '}
-                  сообщений
-                </span>
-              </div>
-              <Messages items={messages} />
+              <ActiveChannelInfo />
+              <Messages />
               <div className="mt-auto px-5 py-3">
                 <MessageForm />
               </div>

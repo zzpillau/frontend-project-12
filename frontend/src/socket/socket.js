@@ -7,20 +7,18 @@ const initSocket = (store) => {
 
   socket.on('newMessage', (payload) => {
     store.dispatch(
-      messagesApi.util.updateQueryData('getMessages', undefined, messageUpdateHelpers.addMessage(payload))
+      messagesApi.util.updateQueryData('getMessages', undefined, messageUpdateHelpers.addMessage(payload)),
     )
   })
 
-  // socket.on('removeMessage', (payload) => {
-  //   store.dispatch(
-  //     messagesApi.util.updateQueryData('getMessages', undefined, messageUpdateHelpers.removeMessage(payload.id))
-  //   )
-  // })
+  socket.on('removeMessage', (payload) => {
+    store.dispatch(
+      messagesApi.util.updateQueryData('getMessages', undefined, messageUpdateHelpers.removeMessage(payload.id)),
+    )
+  })
 }
 
 export default initSocket
-
-
 
 // app.post('/api/v1/messages', { preValidation: [app.authenticate] }, async (req, reply) => {
 // const message = req.body;

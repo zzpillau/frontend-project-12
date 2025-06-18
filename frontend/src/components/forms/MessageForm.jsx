@@ -46,6 +46,7 @@ const MessageForm = () => {
       console.log('newMessage', newMessage)
       addMessage(newMessage)
       resetForm()
+      inputRef.current?.focus()
     },
   })
 
@@ -63,11 +64,11 @@ const MessageForm = () => {
           ref={inputRef}
         />
         <Button
-         type="submit"
-         ariant="outline"
-         className="btn btn-group-vertical"
-         disabled={formik.isSubmitting}
-         >
+          type="submit"
+          variant="outline"
+          className="btn btn-group-vertical"
+          disabled={formik.isSubmitting || !formik.values.body.length}
+        >
           <ArrowRightSquare size={20} />
           <span className="visually-hidden">Отправить</span>
         </Button>
