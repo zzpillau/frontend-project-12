@@ -15,21 +15,21 @@ const initSocket = (store) => {
     )
   })
 
-  socket.on('removeMessage', (payload) => {
-    store.dispatch(
-      messagesApi.util.updateQueryData('getMessages', undefined, messageUpdateHelpers.removeMessage(payload.id)),
-    )
-  })
-
   socket.on('newChannel', (payload) => {
     store.dispatch(
-      channelsApi.util.updateQueryData('addChannel', undefined, channelsUpdateHelpers.addChannel(payload)),
+      channelsApi.util.updateQueryData('getChannels', undefined, channelsUpdateHelpers.addChannel(payload)),
     )
   })
 
   socket.on('removeChannel', (payload) => {
     store.dispatch(
       channelsApi.util.updateQueryData('getChannels', undefined, channelsUpdateHelpers.removeChannel(payload)),
+    )
+  })
+
+  socket.on('renameChannel', (payload) => {
+    store.dispatch(
+      channelsApi.util.updateQueryData('getChannels', undefined, channelsUpdateHelpers.renameChannel(payload)),
     )
   })
 }

@@ -1,10 +1,11 @@
 import AddChannelModal from './AddChannelModal.jsx'
 import RemoveChannelModal from './RemoveChannelModal.jsx'
+import RenameChannelModal from './RenameChannelModal.jsx'
 
 const modalComponents = {
   add: AddChannelModal,
   remove: RemoveChannelModal,
-  rename: null,
+  rename: RenameChannelModal,
 }
 
 const getModalComponent = type => modalComponents[type]

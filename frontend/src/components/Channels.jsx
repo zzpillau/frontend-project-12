@@ -21,6 +21,11 @@ const Channels = ({ items }) => {
     dispatch(actions.openModal({ modalType: 'remove', channelId: id }))
   }
 
+  const handleRenameModal = (id, name) => {
+    console.log('handleRenameModal', { modalType: 'rename', channelId: id, channelName: name })
+    dispatch(actions.openModal({ modalType: 'rename', channelId: id, channelName: name }))
+  }
+
   const activeChannelId = useSelector(selectActiveChannelId)
 
   // TODO кнопочку Button компонентом вынести а то дублирование
@@ -68,7 +73,7 @@ const Channels = ({ items }) => {
                   </Button>
                   <Dropdown.Toggle split variant={isActive ? 'secondary' : null} id={`dropdown-${channel.id}`} />
                   <Dropdown.Menu>
-                    <Dropdown.Item>Редактировать</Dropdown.Item>
+                    <Dropdown.Item onClick={() => handleRenameModal(channel.id, channel.name)}>Редактировать</Dropdown.Item>
                     <Dropdown.Item onClick={() => handleRemoveModal(channel.id)}>Удалить</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>

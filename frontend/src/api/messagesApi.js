@@ -23,19 +23,19 @@ export const messagesApi = createApi({
         body: newMessage,
       }),
     }),
-    editMessage: builder.mutation({
-      query: (id, body) => ({
-        url: id,
-        method: 'PATCH',
-        body,
-      }),
-    }),
-    removeMessage: builder.mutation({
-      query: id => ({
-        url: id,
-        method: 'DELETE',
-      }),
-    }),
+    // editMessage: builder.mutation({
+    //   query: (id, body) => ({
+    //     url: id,
+    //     method: 'PATCH',
+    //     body,
+    //   }),
+    // }),
+    // removeMessage: builder.mutation({
+    //   query: id => ({
+    //     url: id,
+    //     method: 'DELETE',
+    //   }),
+    // }),
 
   }),
 })
@@ -44,10 +44,10 @@ const messageUpdateHelpers = {
   addMessage: message => (draft) => {
     draft.push(message)
   },
-  removeMessage: id => (draft) => {
-    return draft.filter(msg => msg.id !== id)
-  },
-  // editMessage
+  // removeMessage: id => (draft) => {
+  //   return draft.filter(msg => msg.id !== id)
+  // },
+  // // editMessage
 }
 
 export { messageUpdateHelpers }
@@ -55,6 +55,6 @@ export { messageUpdateHelpers }
 export const {
   useGetMessagesQuery,
   useAddMessageMutation,
-  useEditMessageMutation,
-  useRemoveMessageMutation,
+  // useEditMessageMutation,
+  // useRemoveMessageMutation,
 } = messagesApi

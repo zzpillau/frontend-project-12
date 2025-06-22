@@ -39,6 +39,14 @@ export const channelsApi = createApi({
       }),
       invalidatesTags: ['Channels'],
     }),
+    renameChannel: builder.mutation({
+      query: ({id, name}) => ({
+        url: id,
+        method: 'PATCH',
+        body: {name}
+      }),
+      invalidatesTags: ['Channels'],
+    })
   }),
 })
 
@@ -51,6 +59,12 @@ export const createChannelsUpdateHelpers = store => ({
     store.dispatch(setActiveChannelId(newChannels[0].id))
     return newChannels
   },
+  renameChannel: (id, name) => (draft) => {
+    const channel = draft.find((c) => c.id === id);
+    if (channel) {
+      channel.name = name;
+    }
+  }
 })
 
 export const {
@@ -58,4 +72,5 @@ export const {
   useGetChannelByIdQuery,
   useAddChannelMutation,
   useRemoveChannelMutation,
+  useRenameChannelMutation,
 } = channelsApi
