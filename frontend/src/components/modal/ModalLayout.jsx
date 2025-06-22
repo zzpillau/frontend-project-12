@@ -1,13 +1,15 @@
+import React from 'react'
+
 import Modal from 'react-bootstrap/Modal'
 import getModalComponent from '.'
 
-const ModalLayout = ({ show, onHide, type}) => {
+const ModalLayout = ({ show, onHide, type }) => {
   // TODO layout должен принимать тип модалки
 
   const ModalComponent = getModalComponent(type)
 
   if (!ModalComponent) {
-    return null;
+    return null
   }
 
   return (

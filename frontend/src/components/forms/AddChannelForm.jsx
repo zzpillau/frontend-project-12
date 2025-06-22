@@ -1,11 +1,9 @@
 import React from 'react'
 
-import { useEffect, useRef, useMemo } from 'react'
-
 import { useFormik } from 'formik'
-import { Button, Form } from 'react-bootstrap'
+import { Form } from 'react-bootstrap'
 
-import { useGetChannelsQuery } from '../../api/channelsApi.js' // useAddChannelMutation move to AddChannelModal
+import { useGetChannelsQuery } from '../../api/channelsApi.js'
 
 import * as Yup from 'yup'
 
@@ -13,8 +11,8 @@ const channelNameSchema = (existingChannelsNames) => {
   return Yup.object().shape({
     name: Yup.string().trim().strict(true)
       .notOneOf(existingChannelsNames, 'DUPLICATE_ERROR')
-      .min(3, 'Too Short!')
-      .max(20, 'Too Long!')
+      .min(3, 'От 3 до 20 символов')
+      .max(20, 'От 3 до 20 символов')
       .required('Required'),
   })
 }

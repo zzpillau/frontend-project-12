@@ -4,17 +4,26 @@ import cn from 'classnames'
 import { useDispatch, useSelector } from 'react-redux'
 import { setActiveChannelId } from '../slices/channelsSlice.js'
 import { selectActiveChannelId } from '../slices/channelsSlice.js'
+import { actions } from '../slices/modalSlice.js'
 
 import { ButtonGroup, Button, Dropdown } from 'react-bootstrap'
 
 const Channels = ({ items }) => {
   const dispatch = useDispatch()
 
-  const handleClick = (e) => {
+  const handleSetActiveId = (e) => {
     dispatch(setActiveChannelId(e.target.id))
   }
 
+  const handleRemoveModal = (id) => {
+    console.log('handleRemoveModal')
+
+    dispatch(actions.openModal({ modalType: 'remove', channelId: id }))
+  }
+
   const activeChannelId = useSelector(selectActiveChannelId)
+
+  // TODO кнопочку Button компонентом вынести а то дублирование
 
   return (
     <ul
@@ -24,7 +33,7 @@ const Channels = ({ items }) => {
       {items.map((channel) => {
         const isActive = channel.id === activeChannelId
 
-        const classes = cn('w-100', 'rounded-0', 'text-start', 'text-truncate','btn', {
+        const classes = cn('w-100', 'rounded-0', 'text-start', 'text-truncate', 'btn', {
           'btn-secondary': isActive,
         })
 
@@ -38,7 +47,7 @@ const Channels = ({ items }) => {
                   type="button"
                   variant="null"
                   className={classes}
-                  onClick={e => handleClick(e)}
+                  onClick={e => handleSetActiveId(e)}
                 >
                   <span className="me-1">#</span>
                   {channel.name}
@@ -52,7 +61,7 @@ const Channels = ({ items }) => {
                     type="button"
                     variant="null"
                     className={classes}
-                    onClick={e => handleClick(e)}
+                    onClick={e => handleSetActiveId(e)}
                   >
                     <span className="me-1">#</span>
                     {channel.name}
@@ -60,7 +69,7 @@ const Channels = ({ items }) => {
                   <Dropdown.Toggle split variant={isActive ? 'secondary' : null} id={`dropdown-${channel.id}`} />
                   <Dropdown.Menu>
                     <Dropdown.Item>Редактировать</Dropdown.Item>
-                    <Dropdown.Item>Удалить</Dropdown.Item>
+                    <Dropdown.Item onClick={() => handleRemoveModal(channel.id)}>Удалить</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
               )}

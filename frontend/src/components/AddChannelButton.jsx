@@ -15,12 +15,12 @@ const AddChannelButton = () => {
   const showModal = useSelector(selectModalStatus)
 
   const openModal = () => {
-    dispatch(actions.openModal('add'))
+    dispatch(actions.openModal({ modalType: 'add' }))
   }
 
   const handleClose = () => dispatch(actions.closeModal())
 
-  const modalType =  useSelector(selectModalType);
+  const modalType = useSelector(selectModalType)
 
   return (
     <>

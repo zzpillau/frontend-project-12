@@ -1,5 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
+import { setActiveChannelId } from '../slices/channelsSlice.js'
+
+// TODO rename endpoint
+
 export const channelsApi = createApi({
   reducerPath: 'channelsApi',
   baseQuery: fetchBaseQuery({
@@ -15,7 +19,7 @@ export const channelsApi = createApi({
   endpoints: builder => ({
     getChannels: builder.query({
       query: () => '',
-      providesTags: ['Channels']
+      providesTags: ['Channels'],
     }),
     getChannelById: builder.query({
       query: id => `${id}`,
@@ -26,7 +30,7 @@ export const channelsApi = createApi({
         method: 'POST',
         body: channel,
       }),
-      invalidatesTags: ['Channels']
+      invalidatesTags: ['Channels'],
     }),
     removeChannel: builder.mutation({
       query: id => ({
@@ -38,11 +42,16 @@ export const channelsApi = createApi({
   }),
 })
 
-export const channelsUpdateHelpers = {
+export const createChannelsUpdateHelpers = store => ({
   addChannel: channel => (draft) => {
     draft.push(channel)
   },
-}
+  removeChannel: id => (draft) => {
+    const newChannels = draft.filter(channel => channel.id !== id)
+    store.dispatch(setActiveChannelId(newChannels[0].id))
+    return newChannels
+  },
+})
 
 export const {
   useGetChannelsQuery,
