@@ -1,31 +1,22 @@
-import { React } from 'react'
+import React from 'react'
 
-import { useSelector } from 'react-redux'
-
-import { selectActiveChannelId } from '../../slices/channelsSlice.js'
 import { useGetChannelsQuery } from '../../api/channelsApi.js'
-import { useGetMessagesQuery } from '../../api/messagesApi.js'
 
 import Channels from '../Channels.jsx'
 import Messages from '../Messages.jsx'
 import MessageForm from '../forms/MessageForm.jsx'
 
-import { Button } from 'react-bootstrap'
-import { PlusSquare } from 'react-bootstrap-icons'
 import ActiveChannelInfo from '../ActiveChannelInfo.jsx'
+import AddChannelButton from '../AddChannelButton.jsx'
 
 const MainPage = () => {
   const { data: channels = [], isLoading: isLoadingChannels, error: channelsError } = useGetChannelsQuery()
 
-  const activeChannelId = useSelector(selectActiveChannelId)
-
-  const activeChannel = channels?.find(c => c.id === activeChannelId)
-
+  console.log('channels', channels)
 
   if (isLoadingChannels) {
     return <div className="alert alert-info">Loading channels...</div>
   }
-
 
   if (channelsError) {
     return (
@@ -44,10 +35,7 @@ const MainPage = () => {
           <div className="col-4 col-md-2 border-end px-0 bg-light flex-column h-100 d-flex">
             <div className="d-flex mt-1 justify-content-between mb-2 ps-4 pe-2 p-4">
               <b>Каналы</b>
-              <Button type="button" variant="group-vertical" className="p-0 text-primary">
-                <PlusSquare size={20} />
-                <span className="visually-hidden">+</span>
-              </Button>
+              <AddChannelButton />
             </div>
             <Channels items={channels} />
           </div>

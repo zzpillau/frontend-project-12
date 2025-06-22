@@ -15,6 +15,7 @@ export const channelsApi = createApi({
   endpoints: builder => ({
     getChannels: builder.query({
       query: () => '',
+      providesTags: ['Channels']
     }),
     getChannelById: builder.query({
       query: id => `${id}`,
@@ -25,15 +26,23 @@ export const channelsApi = createApi({
         method: 'POST',
         body: channel,
       }),
+      invalidatesTags: ['Channels']
     }),
     removeChannel: builder.mutation({
       query: id => ({
         url: id,
         method: 'DELETE',
       }),
+      invalidatesTags: ['Channels'],
     }),
   }),
 })
+
+export const channelsUpdateHelpers = {
+  addChannel: channel => (draft) => {
+    draft.push(channel)
+  },
+}
 
 export const {
   useGetChannelsQuery,

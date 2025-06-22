@@ -1,19 +1,17 @@
-import React from "react"
+import React from 'react'
 
-import { useSelector } from "react-redux"
+import { useSelector } from 'react-redux'
 
-import { useGetChannelsQuery } from "../api/channelsApi.js"
+import { useGetChannelsQuery } from '../api/channelsApi.js'
 
-import { useGetMessagesQuery } from "../api/messagesApi.js"
+import { useGetMessagesQuery } from '../api/messagesApi.js'
 
-import { selectActiveChannelId } from "../slices/channelsSlice.js"
-
+import { selectActiveChannelId } from '../slices/channelsSlice.js'
 
 const ActiveChannelInfo = () => {
-
   const { data: channels = [] } = useGetChannelsQuery()
   const { data: messages = [] } = useGetMessagesQuery()
-  
+
   const activeChannelId = useSelector(selectActiveChannelId)
 
   const activeChannel = channels?.find(c => c.id === activeChannelId)

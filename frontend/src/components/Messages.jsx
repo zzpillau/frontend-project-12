@@ -6,9 +6,8 @@ import { useGetMessagesQuery } from '../api/messagesApi.js'
 import { selectActiveChannelId } from '../slices/channelsSlice.js'
 
 const Messages = () => {
-
   const { data: messages = [], isLoading: isLoadingMessages } = useGetMessagesQuery()
-  
+
   const activeChannelId = useSelector(selectActiveChannelId)
 
   const activeChannelMessages = messages.filter(m => m.channelId === activeChannelId) ?? []
