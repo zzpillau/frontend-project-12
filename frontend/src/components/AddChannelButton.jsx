@@ -2,15 +2,12 @@ import React from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 
-import { useState } from 'react'
-
 import ModalLayout from '../components/modal/ModalLayout.jsx'
-import AddChannelModal from '../components/modal/AddChannelModal.jsx'
 
 import { Button } from 'react-bootstrap'
 import { PlusSquare } from 'react-bootstrap-icons'
 
-import { actions, selectModalStatus } from '../slices/modalSlice.js'
+import { actions, selectModalStatus, selectModalType } from '../slices/modalSlice.js'
 
 const AddChannelButton = () => {
   const dispatch = useDispatch()
@@ -18,10 +15,12 @@ const AddChannelButton = () => {
   const showModal = useSelector(selectModalStatus)
 
   const openModal = () => {
-    dispatch(actions.openModal())
+    dispatch(actions.openModal('add'))
   }
 
   const handleClose = () => dispatch(actions.closeModal())
+
+  const modalType =  useSelector(selectModalType);
 
   return (
     <>
@@ -34,12 +33,7 @@ const AddChannelButton = () => {
         <PlusSquare size={20} />
         <span className="visually-hidden">+</span>
       </Button>
-      {showModal
-        && (
-          <ModalLayout show={showModal} onHide={handleClose}>
-            <AddChannelModal onClose={handleClose} />
-          </ModalLayout>
-        )}
+      <ModalLayout show={showModal} onHide={handleClose} type={modalType} />
     </>
   )
 }

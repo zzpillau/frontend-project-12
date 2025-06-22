@@ -11,7 +11,6 @@ const AddChannelModal = ({ onClose }) => {
   const handleSubmit = (newChannel) => {
     if (newChannel?.name?.trim()) {
       addChannel(newChannel)
-      console.log('Новый канал:', newChannel)
       onClose()
     }
   }
