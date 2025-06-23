@@ -6,13 +6,17 @@ import Modal from 'react-bootstrap/Modal'
 import AddChannelForm from '../forms/AddChannelForm.jsx'
 
 import { useAddChannelMutation } from '../../api/channelsApi.js'
+import { useDispatch } from 'react-redux'
+import { setActiveChannelId } from '../../slices/channelsSlice.js'
 
 const AddChannelModal = ({ onClose }) => {
-  const [addChannel] = useAddChannelMutation()
+  const [addChannel, { isLoading }] = useAddChannelMutation()
+  const dispatch = useDispatch()
 
-  const handleSubmit = (newChannel) => {
+  const handleSubmit = async (newChannel) => {
     if (newChannel?.name?.trim()) {
-      addChannel(newChannel)
+      const result = await addChannel(newChannel).unwrap()
+      dispatch(setActiveChannelId(result.id))
       onClose()
     }
   }
@@ -25,10 +29,10 @@ const AddChannelModal = ({ onClose }) => {
       <Modal.Body>
         <AddChannelForm onSubmit={handleSubmit} />
         <div className="d-flex justify-content-end">
-          <Button variant="secondary" className="me-2" onClick={onClose}>
+          <Button variant="secondary" className="me-2" disabled={isLoading} onClick={onClose}>
             Отмена
           </Button>
-          <Button type="submit" form="add-channel-form" variant="primary">
+          <Button type="submit" disabled={isLoading} form="add-channel-form" variant="primary">
             Отправить
           </Button>
         </div>

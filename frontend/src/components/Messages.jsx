@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
 import { useGetMessagesQuery } from '../api/messagesApi.js'
@@ -7,6 +7,12 @@ import { selectActiveChannelId } from '../slices/channelsSlice.js'
 
 const Messages = () => {
   const { data: messages = [], isLoading: isLoadingMessages } = useGetMessagesQuery()
+
+  const messagesRef = useRef(null)
+
+  useEffect(() => {
+    messagesRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [messages])
 
   const activeChannelId = useSelector(selectActiveChannelId)
 
@@ -26,6 +32,7 @@ const Messages = () => {
           {m.body}
         </div>
       ))}
+      <div ref={messagesRef} />
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 
 import { useFormik } from 'formik'
 import { Form } from 'react-bootstrap'
@@ -7,9 +7,14 @@ import { useGetChannelsQuery } from '../../api/channelsApi.js'
 
 import channelNameSchema from '../../validationSchemas.js'
 
-
 const AddChannelForm = ({ onSubmit }) => {
   const { data: channels } = useGetChannelsQuery()
+
+  const inputRef = useRef(null)
+
+  useEffect(() => {
+    inputRef.current?.focus()
+  }, [])
 
   const existingChannelsNames = channels?.map(c => c.name) || []
 
@@ -43,6 +48,7 @@ const AddChannelForm = ({ onSubmit }) => {
           value={formik.values.name}
           isInvalid={formik.touched.name && formik.errors.name}
           disabled={formik.isSubmitting}
+          ref={inputRef}
         >
         </Form.Control>
         <Form.Label htmlFor="name" visuallyHidden>Имя канала</Form.Label>

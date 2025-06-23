@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux'
 import { selectChannelId } from '../../slices/modalSlice.js'
 
 const RemoveChannelModal = ({ onClose }) => {
-  const [removeChannel] = useRemoveChannelMutation()
+  const [removeChannel, { isLoading }] = useRemoveChannelMutation()
 
   const id = useSelector(selectChannelId)
 
@@ -26,10 +26,10 @@ const RemoveChannelModal = ({ onClose }) => {
       <Modal.Body>
         <p className="lead">Уверены?</p>
         <div className="d-flex justify-content-end">
-          <Button variant="secondary" className="me-2" onClick={onClose}>
+          <Button variant="secondary" className="me-2" disabled={isLoading} onClick={onClose}>
             Отмена
           </Button>
-          <Button variant="primary" onClick={handleSubmit}>
+          <Button variant="primary" disabled={isLoading} onClick={handleSubmit}>
             Отправить
           </Button>
         </div>

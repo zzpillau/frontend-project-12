@@ -4,7 +4,7 @@ const initialState = {
   isOpen: false,
   modalType: null,
   channelId: null,
-  channelName: null
+  channelName: null,
 }
 
 const modalSlice = createSlice({

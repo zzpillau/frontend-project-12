@@ -40,13 +40,13 @@ export const channelsApi = createApi({
       invalidatesTags: ['Channels'],
     }),
     renameChannel: builder.mutation({
-      query: ({id, name}) => ({
+      query: ({ id, name }) => ({
         url: id,
         method: 'PATCH',
-        body: {name}
+        body: { name },
       }),
       invalidatesTags: ['Channels'],
-    })
+    }),
   }),
 })
 
@@ -54,17 +54,22 @@ export const createChannelsUpdateHelpers = store => ({
   addChannel: channel => (draft) => {
     draft.push(channel)
   },
-  removeChannel: id => (draft) => {
-    const newChannels = draft.filter(channel => channel.id !== id)
-    store.dispatch(setActiveChannelId(newChannels[0].id))
-    return newChannels
-  },
-  renameChannel: (id, name) => (draft) => {
-    const channel = draft.find((c) => c.id === id);
-    if (channel) {
-      channel.name = name;
+  removeChannel: ({ id }) => (draft) => {
+    const index = draft.findIndex(c => c.id === id)
+    if (index !== -1) {
+      draft.splice(index, 1)
+      store.dispatch(setActiveChannelId(draft[0]?.id ?? null))
     }
-  }
+    else {
+      console.warn('Канал не найден для удаления:', id)
+    }
+  },
+  renameChannel: ({ id, name }) => (draft) => {
+    const channel = draft.find(c => c.id === id)
+    if (channel) {
+      channel.name = name
+    }
+  },
 })
 
 export const {

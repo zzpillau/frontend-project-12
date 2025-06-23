@@ -8,7 +8,12 @@ import { actions } from '../slices/modalSlice.js'
 
 import { ButtonGroup, Button, Dropdown } from 'react-bootstrap'
 
-const Channels = ({ items }) => {
+import { useGetChannelsQuery } from '../api/channelsApi.js'
+
+const Channels = () => {
+  const { data: channels = [] } = useGetChannelsQuery()
+
+  console.log('channels', channels)
   const dispatch = useDispatch()
 
   const handleSetActiveId = (e) => {
@@ -28,14 +33,12 @@ const Channels = ({ items }) => {
 
   const activeChannelId = useSelector(selectActiveChannelId)
 
-  // TODO кнопочку Button компонентом вынести а то дублирование
-
   return (
     <ul
       id="channels-box"
       className="nav flex-column nav-pills nav-fill px-2 mb-3 overflow-auto h-100 d-block"
     >
-      {items.map((channel) => {
+      {channels.map((channel) => {
         const isActive = channel.id === activeChannelId
 
         const classes = cn('w-100', 'rounded-0', 'text-start', 'text-truncate', 'btn', {

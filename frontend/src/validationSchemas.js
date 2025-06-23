@@ -10,5 +10,4 @@ const channelNameSchema = (existingChannelsNames) => {
   })
 }
 
-
 export default channelNameSchema
