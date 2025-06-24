@@ -88,9 +88,9 @@ const Channels = () => {
                   {leoFilter.clean(channel.name)}
                   </Button>
                   <Dropdown.Toggle split variant={isActive ? 'secondary' : null} id={`dropdown-${channel.id}`} />
-                  <Dropdown.Menu>
-                    <Dropdown.Item onClick={() => handleRenameModal(channel.id, channel.name)}>Редактировать</Dropdown.Item>
-                    <Dropdown.Item onClick={() => handleRemoveModal(channel.id)}>Удалить</Dropdown.Item>
+                  <Dropdown.Menu aria-label={t('channel_management')}>
+                    <Dropdown.Item onClick={() => handleRemoveModal(channel.id)}>{t('remove')}</Dropdown.Item>
+                    <Dropdown.Item onClick={() => handleRenameModal(channel.id, channel.name)}>{t('rename')}</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
               )}

@@ -36,7 +36,7 @@ const RemoveChannelModal = ({ onClose }) => {
         <Modal.Title>{t('remove_channel')}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p className="lead">{t('sure')}</p>
+        <p className="lead">{t('confirm')}</p>
         <div className="d-flex justify-content-end">
           <Button variant="secondary" className="me-2" disabled={isLoading} onClick={onClose}>
             {t('reject')}

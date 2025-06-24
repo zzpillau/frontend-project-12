@@ -5,7 +5,7 @@ import AuthContext from '../contexts/index.js'
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom'
 
 import LoginPage from './pages/LoginPage.jsx'
-import UnknownPage from './pages/UnknownPage.jsx'
+import PageNotFound from './pages/PageNotFound.jsx'
 import MainPage from './pages/MainPage.jsx'
 import SignUpPage from './pages/SignUpPage.jsx'
 
@@ -62,7 +62,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="*" element={<UnknownPage />} />
+            <Route path="*" element={<PageNotFound />} />
             <Route
               index
               element={(

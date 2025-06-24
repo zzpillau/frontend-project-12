@@ -24,8 +24,9 @@ const resources = {
       add_channel: 'Добавить канал',
       reject: 'Отменить',
       remove_channel: 'Удалить канал',
-      sure: 'Уверены?',
+      confirm: 'Уверены?',
       remove: 'Удалить',
+      rename: 'Переименовать',
       rename_channel: 'Переименовать канал',
       channel_name: 'Имя канала',
       must_be_unique: 'Должно быть уникальным',
@@ -35,9 +36,10 @@ const resources = {
       channel_added: 'Канал создан',
       channel_removed: 'Канал удален',
       channel_renamed: 'Канал переименован',
-      fetch_error: 'Ошибка сети',
+      channel_management: 'Управление каналом',
+      fetch_error: 'Ошибка соединения',
       parsing_error: 'Ошибка загрузки данных',
-
+      plus: '+',
     },
   },
 }

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 import { useTranslation } from 'react-i18next'
 
-const UnknownPage = () => {
+const PageNotFound = () => {
   const { t } = useTranslation()
 
   return (
@@ -21,4 +21,4 @@ const UnknownPage = () => {
   )
 }
 
-export default UnknownPage
+export default PageNotFound

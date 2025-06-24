@@ -9,7 +9,11 @@ import { PlusSquare } from 'react-bootstrap-icons'
 
 import { actions, selectModalStatus, selectModalType } from '../slices/modalSlice.js'
 
+import { useTranslation } from 'react-i18next'
+
 const AddChannelButton = () => {
+const {t} = useTranslation()
+
   const dispatch = useDispatch()
 
   const showModal = useSelector(selectModalStatus)
@@ -31,7 +35,7 @@ const AddChannelButton = () => {
         onClick={openModal}
       >
         <PlusSquare size={20} />
-        <span className="visually-hidden">+</span>
+        <span className="visually-hidden">{t('plus')}</span>
       </Button>
       <ModalLayout show={showModal} onHide={handleClose} type={modalType} />
     </>

@@ -22,7 +22,7 @@ import App from '../src/components/App.jsx'
 const init = async () => {
 
   const rollbarConfig = {
-    accessToken: process.env.REACT_APP_POST_CLIENT_ITEM_ACCESS_TOKEN,
+    accessToken: import.meta.env.VITE_ROLLBAR_TOKEN,
     environment: 'production',
     captureUncaught: true,
     captureUnhandledRejections: true,
