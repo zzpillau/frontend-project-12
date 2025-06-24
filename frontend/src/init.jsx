@@ -44,7 +44,9 @@ const init = async () => {
 
   initSocket(store)
 
-  function TestError() { const a = null; return a.hello(); }
+function TestError() {
+  throw new Error('🔥 Проверка Rollbar!');
+}
 
   return (
     <React.StrictMode>
