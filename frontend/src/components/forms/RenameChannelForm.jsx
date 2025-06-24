@@ -5,11 +5,13 @@ import { Form } from 'react-bootstrap'
 
 import { useGetChannelsQuery } from '../../api/channelsApi.js'
 
-import {channelNameSchema} from '../../validationSchemas.js'
+import { channelNameSchema } from '../../validationSchemas.js'
 import { useSelector } from 'react-redux'
 import { selectChannelName } from '../../slices/modalSlice.js'
+import { useTranslation } from 'react-i18next'
 
 const RenameChannelForm = ({ onSubmit }) => {
+  const { t } = useTranslation()
   const { data: channels } = useGetChannelsQuery()
 
   const inputRef = useRef(null)
@@ -55,7 +57,7 @@ const RenameChannelForm = ({ onSubmit }) => {
           ref={inputRef}
         >
         </Form.Control>
-        <Form.Label htmlFor="name" visuallyHidden>Имя канала</Form.Label>
+        <Form.Label htmlFor="name" visuallyHidden>{t('channel_name')}</Form.Label>
         <Form.Control.Feedback type="invalid">
           {formik.submitCount > 0 && formik.errors.name}
         </Form.Control.Feedback>

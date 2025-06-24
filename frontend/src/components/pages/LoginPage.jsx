@@ -3,7 +3,10 @@ import React from 'react'
 import LoginForm from '../forms/LoginForm.jsx'
 import tomato from '../../assets/tomato.png'
 
+import { useTranslation } from 'react-i18next'
+
 const LoginPage = () => {
+  const { t } = useTranslation()
   return (
     <div className="container-fluid h-100">
       <div className="row justify-content-center align-items-center h-100">
@@ -17,9 +20,13 @@ const LoginPage = () => {
                 <LoginForm />
               </div>
             </div>
-                          <div className="card-footer p-4">
-                <div className="text-center"><span>Нет аккаунта?</span> <a href="/signup">Регистрация</a></div>
+            <div className="card-footer p-4">
+              <div className="text-center">
+                <span>{t('has_no_account')}</span>
+                {' '}
+                <a href="/signup">{t('registration')}</a>
               </div>
+            </div>
 
           </div>
         </div>

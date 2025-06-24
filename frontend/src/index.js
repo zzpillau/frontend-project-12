@@ -5,4 +5,8 @@ import './scss/index.scss'
 
 import init from './init.jsx'
 
-createRoot(document.getElementById('root')).render(init())
+const root = createRoot(document.getElementById('root'))
+
+init().then((vdom) => {
+  root.render(vdom)
+})

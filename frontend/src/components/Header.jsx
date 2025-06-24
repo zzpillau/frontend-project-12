@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <Navbar className="shadow-sm navbar navbar-expand-lg navbar-light bg-white">
       <Container>
-        <Link to="/" className='navbar-brand'>Hexlet Chat</Link>
+        <Link to="/" className="navbar-brand">Hexlet Chat</Link>
         {showLogin && <AuthButton />}
       </Container>
     </Navbar>

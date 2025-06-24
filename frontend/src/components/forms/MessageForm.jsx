@@ -12,12 +12,15 @@ import { Button, Form } from 'react-bootstrap'
 import { ArrowRightSquare } from 'react-bootstrap-icons'
 
 import { useAddMessageMutation } from '../../api/messagesApi.js'
+import { useTranslation } from 'react-i18next'
 
 import { uniqueId } from 'lodash'
 
 // { id: '1', body: 'text message', channelId: '1', username: 'admin }
 
 const MessageForm = () => {
+  const { t } = useTranslation()
+
   const [addMessage] = useAddMessageMutation()
 
   const inputRef = useRef(null)
@@ -57,7 +60,7 @@ const MessageForm = () => {
           onChange={formik.handleChange}
           className="border-0 p-0 ps-2 form-control"
           value={formik.values.body}
-          placeholder="Введите сообщение..."
+          placeholder={t('input_message')}
           name="body"
           id="body"
           required
@@ -70,7 +73,7 @@ const MessageForm = () => {
           disabled={formik.isSubmitting || !formik.values.body.length}
         >
           <ArrowRightSquare size={20} />
-          <span className="visually-hidden">Отправить</span>
+          <span className="visually-hidden">{t('send')}</span>
         </Button>
       </Form.Group>
     </Form>

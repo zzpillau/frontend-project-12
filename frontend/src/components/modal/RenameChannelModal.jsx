@@ -7,9 +7,13 @@ import { useRenameChannelMutation } from '../../api/channelsApi.js'
 import { useSelector } from 'react-redux'
 import { selectChannelId } from '../../slices/modalSlice.js'
 
+import { useTranslation } from 'react-i18next'
+
 import RenameChannelForm from '../forms/RenameChannelForm.jsx'
 
 const RenameChannelModal = ({ onClose }) => {
+  const { t } = useTranslation()
+
   const [renameChannel, { isLoading }] = useRenameChannelMutation()
 
   const id = useSelector(selectChannelId)
@@ -23,16 +27,16 @@ const RenameChannelModal = ({ onClose }) => {
   return (
     <>
       <Modal.Header closeButton>
-        <Modal.Title>Переименовать канал</Modal.Title>
+        <Modal.Title>{t('rename_channel')}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <RenameChannelForm onSubmit={handleSubmit} />
         <div className="d-flex justify-content-end">
           <Button variant="secondary" className="me-2" disabled={isLoading} onClick={onClose}>
-            Отмена
+            {t('reject')}
           </Button>
           <Button type="submit" form="rename-channel-form" variant="primary" disabled={isLoading}>
-            Отправить
+            {t('send')}
           </Button>
         </div>
       </Modal.Body>

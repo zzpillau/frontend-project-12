@@ -8,7 +8,11 @@ import { useGetMessagesQuery } from '../api/messagesApi.js'
 
 import { selectActiveChannelId } from '../slices/channelsSlice.js'
 
+import { useTranslation } from 'react-i18next'
+
 const ActiveChannelInfo = () => {
+  const { t } = useTranslation()
+
   const { data: channels = [] } = useGetChannelsQuery()
   const { data: messages = [] } = useGetMessagesQuery()
 
@@ -30,9 +34,7 @@ const ActiveChannelInfo = () => {
         </b>
       </p>
       <span className="text-muted">
-        {messagesCount}
-        {' '}
-        сообщений
+        {t('messages', { count: messagesCount })}
       </span>
     </div>
   )

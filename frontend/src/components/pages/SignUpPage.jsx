@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 import SignUpForm from '../forms/SignUpForm.jsx'
 import tomato from '../../assets/tomato.png'
 

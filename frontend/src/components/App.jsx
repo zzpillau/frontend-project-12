@@ -5,7 +5,7 @@ import AuthContext from '../contexts/index.js'
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom'
 
 import LoginPage from './pages/LoginPage.jsx'
-import Page404 from './pages/Page404.jsx'
+import UnknownPage from './pages/UnknownPage.jsx'
 import MainPage from './pages/MainPage.jsx'
 import SignUpPage from './pages/SignUpPage.jsx'
 
@@ -58,7 +58,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="*" element={<Page404 />} />
+            <Route path="*" element={<UnknownPage />} />
             <Route
               index
               element={(
