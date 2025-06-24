@@ -12,6 +12,8 @@ import i18next from 'i18next'
 import { initReactI18next, I18nextProvider } from 'react-i18next'
 import resources from './locales/index.js'
 
+import leoFilter from 'leo-profanity';
+
 import App from '../src/components/App.jsx'
 
 const init = async () => {
@@ -24,6 +26,9 @@ const init = async () => {
         escapeValue: false,
       },
     })
+
+  leoFilter.add(leoFilter.getDictionary('ru'))
+  leoFilter.add(leoFilter.getDictionary('en'))
 
   initSocket(store)
 

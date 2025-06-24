@@ -8,6 +8,8 @@ import { selectActiveChannelId } from '../slices/channelsSlice.js'
 import handleToastError from '../helpers/handleToastError.js'
 import { useTranslation } from 'react-i18next'
 
+import leoFilter from 'leo-profanity';
+
 const Messages = () => {
   const {t} = useTranslation()
   
@@ -36,7 +38,7 @@ const Messages = () => {
           <b>{m.username}</b>
           :
           {' '}
-          {m.body}
+          {leoFilter.clean(m.body)}
         </div>
       ))}
       <div ref={messagesRef} />

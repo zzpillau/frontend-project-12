@@ -13,6 +13,9 @@ import { useGetChannelsQuery } from '../api/channelsApi.js'
 import handleToastError from '../helpers/handleToastError.js'
 import { useTranslation } from 'react-i18next'
 
+import leoFilter from 'leo-profanity';
+
+
 const Channels = () => {
   const {t} = useTranslation()
   const { data: channels = [], error, isError } = useGetChannelsQuery()
@@ -68,7 +71,7 @@ const Channels = () => {
                   onClick={e => handleSetActiveId(e)}
                 >
                   <span className="me-1">#</span>
-                  {channel.name}
+                  {leoFilter.clean(channel.name)}
                 </Button>
               )}
             {channel.removable
@@ -82,7 +85,7 @@ const Channels = () => {
                     onClick={e => handleSetActiveId(e)}
                   >
                     <span className="me-1">#</span>
-                    {channel.name}
+                  {leoFilter.clean(channel.name)}
                   </Button>
                   <Dropdown.Toggle split variant={isActive ? 'secondary' : null} id={`dropdown-${channel.id}`} />
                   <Dropdown.Menu>

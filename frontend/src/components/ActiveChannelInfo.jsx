@@ -10,6 +10,9 @@ import { selectActiveChannelId } from '../slices/channelsSlice.js'
 
 import { useTranslation } from 'react-i18next'
 
+import leoFilter from 'leo-profanity';
+
+
 const ActiveChannelInfo = () => {
   const { t } = useTranslation()
 
@@ -30,7 +33,7 @@ const ActiveChannelInfo = () => {
         <b>
           #
           {' '}
-          {activeChannel?.name}
+          {leoFilter.clean(activeChannel?.name)}
         </b>
       </p>
       <span className="text-muted">
