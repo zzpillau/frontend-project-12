@@ -16,8 +16,6 @@ import { useTranslation } from 'react-i18next'
 
 import { uniqueId } from 'lodash'
 
-// { id: '1', body: 'text message', channelId: '1', username: 'admin }
-
 const MessageForm = () => {
   const { t } = useTranslation()
 
@@ -64,6 +62,7 @@ const MessageForm = () => {
           name="body"
           id="body"
           required
+          aria-label={t('new_message')}
           ref={inputRef}
         />
         <Button

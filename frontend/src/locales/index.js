@@ -20,6 +20,7 @@ const resources = {
       messages_few: '{{count}} сообщения',
       messages_many: '{{count}} сообщений',
       input_message: 'Введите сообщение...',
+      new_message: 'Новое сообщение',
       send: 'Отправить',
       add_channel: 'Добавить канал',
       reject: 'Отменить',
