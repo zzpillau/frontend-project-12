@@ -1,6 +1,3 @@
-// i18n
-// socket
-// возвращает компонент
 import React from 'react'
 
 import { Provider as RollbarProvider, ErrorBoundary } from '@rollbar/react'

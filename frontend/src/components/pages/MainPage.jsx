@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Channels from '../Channels.jsx'
 import Messages from '../Messages.jsx'
 import MessageForm from '../forms/MessageForm.jsx'

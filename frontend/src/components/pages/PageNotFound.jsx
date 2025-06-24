@@ -1,4 +1,3 @@
-import React from 'react'
 import tomato from '../../assets/tomato.png'
 
 import { Link } from 'react-router-dom'

@@ -1,5 +1,3 @@
-import React from 'react'
-
 import LoginForm from '../forms/LoginForm.jsx'
 import tomato from '../../assets/tomato.png'
 
