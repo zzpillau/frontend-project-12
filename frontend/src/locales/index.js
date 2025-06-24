@@ -35,7 +35,7 @@ const resources = {
       you_can_go: 'Но вы можете перейти',
       to_main_page: 'на главную страницу',
       channel_added: 'Канал создан',
-      channel_removed: 'Канал удален',
+      channel_removed: 'Канал удалён',
       channel_renamed: 'Канал переименован',
       channel_management: 'Управление каналом',
       fetch_error: 'Ошибка соединения',
