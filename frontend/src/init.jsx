@@ -2,7 +2,10 @@
 // socket
 // возвращает компонент
 import React from 'react'
-import { Provider } from 'react-redux'
+
+import { Provider as RollbarProvider, ErrorBoundary } from '@rollbar/react';
+
+import { Provider as StoreProvider } from 'react-redux'
 
 import store from './store'
 
@@ -17,6 +20,15 @@ import leoFilter from 'leo-profanity';
 import App from '../src/components/App.jsx'
 
 const init = async () => {
+
+  const rollbarConfig = {
+    // accessToken: process.env.REACT_APP_POST_CLIENT_ITEM_ACCESS_TOKEN,
+    accessToken: '506517bc535d4b81866d3c461c1492a4',
+    environment: 'testenv',
+    captureUncaught: true,
+    captureUnhandledRejections: true,
+  };
+
   await i18next
     .use(initReactI18next)
     .init({
@@ -32,13 +44,20 @@ const init = async () => {
 
   initSocket(store)
 
+  function TestError() { const a = null; return a.hello(); }
+
   return (
     <React.StrictMode>
-      <Provider store={store}>
-        <I18nextProvider i18n={i18next}>
-          <App />
-        </I18nextProvider>
-      </Provider>
+      <RollbarProvider config={rollbarConfig}>
+        <ErrorBoundary>
+          <StoreProvider store={store}>
+            <I18nextProvider i18n={i18next}>
+              <App />
+              <TestError />
+            </I18nextProvider>
+          </StoreProvider>
+        </ErrorBoundary>
+      </RollbarProvider>
     </React.StrictMode>
   )
 }
