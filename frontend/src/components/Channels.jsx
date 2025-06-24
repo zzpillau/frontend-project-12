@@ -76,7 +76,7 @@ const Channels = () => {
               )}
             {channel.removable
               && (
-                <Dropdown className="d-flex justify-content-between w-100" as={ButtonGroup}>
+                <Dropdown className="d-flex justify-content-between w-100" as={ButtonGroup} >
                   <Button
                     id={channel.id}
                     type="button"
@@ -87,8 +87,10 @@ const Channels = () => {
                     <span className="me-1">#</span>
                   {leoFilter.clean(channel.name)}
                   </Button>
-                  <Dropdown.Toggle split variant={isActive ? 'secondary' : null} id={`dropdown-${channel.id}`} />
-                  <Dropdown.Menu aria-label={t('channel_management')}>
+                  <Dropdown.Toggle split variant={isActive ? 'secondary' : null} id={`dropdown-${channel.id}`}>
+                    <span class="visually-hidden">{t('channel_management')}</span>
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
                     <Dropdown.Item onClick={() => handleRemoveModal(channel.id)}>{t('remove')}</Dropdown.Item>
                     <Dropdown.Item onClick={() => handleRenameModal(channel.id, channel.name)}>{t('rename')}</Dropdown.Item>
                   </Dropdown.Menu>
