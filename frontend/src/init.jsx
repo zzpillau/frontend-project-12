@@ -22,9 +22,8 @@ import App from '../src/components/App.jsx'
 const init = async () => {
 
   const rollbarConfig = {
-    // accessToken: process.env.REACT_APP_POST_CLIENT_ITEM_ACCESS_TOKEN,
-    accessToken: '506517bc535d4b81866d3c461c1492a4',
-    environment: 'testenv',
+    accessToken: process.env.REACT_APP_POST_CLIENT_ITEM_ACCESS_TOKEN,
+    environment: 'production',
     captureUncaught: true,
     captureUnhandledRejections: true,
   };
@@ -44,10 +43,6 @@ const init = async () => {
 
   initSocket(store)
 
-function TestError() {
-  throw new Error('🔥 Проверка Rollbar!');
-}
-
   return (
     <React.StrictMode>
       <RollbarProvider config={rollbarConfig}>
@@ -55,7 +50,6 @@ function TestError() {
           <StoreProvider store={store}>
             <I18nextProvider i18n={i18next}>
               <App />
-              <TestError />
             </I18nextProvider>
           </StoreProvider>
         </ErrorBoundary>
