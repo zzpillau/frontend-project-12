@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import cn from 'classnames'
 
 import { useDispatch, useSelector } from 'react-redux'
@@ -10,8 +10,12 @@ import { ButtonGroup, Button, Dropdown } from 'react-bootstrap'
 
 import { useGetChannelsQuery } from '../api/channelsApi.js'
 
+import handleToastError from '../helpers/handleToastError.js'
+import { useTranslation } from 'react-i18next'
+
 const Channels = () => {
-  const { data: channels = [] } = useGetChannelsQuery()
+  const {t} = useTranslation()
+  const { data: channels = [], error, isError } = useGetChannelsQuery()
 
   console.log('channels', channels)
   const dispatch = useDispatch()
@@ -32,6 +36,12 @@ const Channels = () => {
   }
 
   const activeChannelId = useSelector(selectActiveChannelId)
+
+    useEffect(() => {
+      if (isError) {
+        handleToastError(error.status, t)
+      }
+    }, [isError, error])
 
   return (
     <ul

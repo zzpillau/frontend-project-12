@@ -11,17 +11,26 @@ import { useTranslation } from 'react-i18next'
 
 import RenameChannelForm from '../forms/RenameChannelForm.jsx'
 
+import { toast } from 'react-toastify'
+import handleToastError from '../../helpers/handleToastError.js'
+
+
 const RenameChannelModal = ({ onClose }) => {
   const { t } = useTranslation()
 
   const [renameChannel, { isLoading }] = useRenameChannelMutation()
 
   const id = useSelector(selectChannelId)
-  console.log('id', id)
 
-  const handleSubmit = (values) => {
-    renameChannel({ id, name: values.name })
-    onClose()
+  const handleSubmit = async (values) => {
+    try {
+      await renameChannel({ id, name: values.name }).unwrap()
+      toast.success(t('channel_renamed'))
+      onClose()
+    } catch (err) {
+      console.error('ERROR RenameChannelModal')
+      handleToastError(err.status, t)
+    }
   }
 
   return (

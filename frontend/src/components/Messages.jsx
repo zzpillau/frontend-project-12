@@ -5,8 +5,13 @@ import { useGetMessagesQuery } from '../api/messagesApi.js'
 
 import { selectActiveChannelId } from '../slices/channelsSlice.js'
 
+import handleToastError from '../helpers/handleToastError.js'
+import { useTranslation } from 'react-i18next'
+
 const Messages = () => {
-  const { data: messages = [], isLoading: isLoadingMessages } = useGetMessagesQuery()
+  const {t} = useTranslation()
+  
+  const { data: messages = [], error, isError } = useGetMessagesQuery()
 
   const messagesRef = useRef(null)
 
@@ -14,14 +19,16 @@ const Messages = () => {
     messagesRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
 
+  useEffect(() => {
+    if (isError) {
+      handleToastError(error.status, t)
+    }
+  }, [isError, error])
+
   const activeChannelId = useSelector(selectActiveChannelId)
 
   const activeChannelMessages = messages.filter(m => m.channelId === activeChannelId) ?? []
-
-  if (isLoadingMessages) {
-    return <div className="alert alert-info">Loading messages...</div>
-  }
-
+  
   return (
     <div id="messages-box" className="chat-messages overflow-auto px-5 text-start">
       {activeChannelMessages.map(m => (

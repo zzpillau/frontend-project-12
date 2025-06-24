@@ -19,6 +19,7 @@ export const channelsApi = createApi({
   endpoints: builder => ({
     getChannels: builder.query({
       query: () => '',
+      // query: () => 'sbjkfjkwejd', // MOCK ERROR
       providesTags: ['Channels'],
     }),
     getChannelById: builder.query({
@@ -27,6 +28,7 @@ export const channelsApi = createApi({
     addChannel: builder.mutation({
       query: channel => ({
         url: '',
+        // url: ',mmnf,snf,n', // MOCK ERROR
         method: 'POST',
         body: channel,
       }),

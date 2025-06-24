@@ -11,6 +11,9 @@ import SignUpPage from './pages/SignUpPage.jsx'
 
 import Layout from './Layout.jsx'
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import '../scss/App.scss'
 
 const AuthProvider = ({ children }) => {
@@ -72,6 +75,8 @@ const App = () => {
           </Route>
         </Routes>
       </BrowserRouter>
+      <ToastContainer position="top-right" autoClose={3000} />
+
     </AuthProvider>
   )
 }

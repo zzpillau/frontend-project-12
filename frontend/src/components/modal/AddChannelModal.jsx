@@ -10,6 +10,9 @@ import { useDispatch } from 'react-redux'
 import { setActiveChannelId } from '../../slices/channelsSlice.js'
 import { useTranslation } from 'react-i18next'
 
+import { toast } from 'react-toastify'
+import handleToastError from '../../helpers/handleToastError.js'
+
 const AddChannelModal = ({ onClose }) => {
   const { t } = useTranslation()
 
@@ -17,10 +20,16 @@ const AddChannelModal = ({ onClose }) => {
   const dispatch = useDispatch()
 
   const handleSubmit = async (newChannel) => {
-    if (newChannel?.name?.trim()) {
-      const result = await addChannel(newChannel).unwrap()
-      dispatch(setActiveChannelId(result.id))
-      onClose()
+    try {
+      if (newChannel?.name?.trim()) {
+        const result = await addChannel(newChannel).unwrap()
+        dispatch(setActiveChannelId(result.id))
+        toast.success(t('channel_added'))
+        onClose()
+      }
+    } catch (err) {
+      console.error('ERROR AddChannelModal')
+      handleToastError(err.status, t)
     }
   }
 

@@ -28,7 +28,7 @@ const RenameChannelForm = ({ onSubmit }) => {
     initialValues: {
       name: oldName,
     },
-    validationSchema: channelNameSchema(existingChannelsNames),
+    validationSchema: channelNameSchema(existingChannelsNames, t),
     onSubmit: (values, { resetForm, setSubmitting }) => {
       setSubmitting(false)
       onSubmit(values)

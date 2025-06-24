@@ -8,6 +8,10 @@ import { useSelector } from 'react-redux'
 import { selectChannelId } from '../../slices/modalSlice.js'
 import { useTranslation } from 'react-i18next'
 
+import { toast } from 'react-toastify'
+import handleToastError from '../../helpers/handleToastError.js'
+
+
 const RemoveChannelModal = ({ onClose }) => {
   const { t } = useTranslation()
 
@@ -15,10 +19,15 @@ const RemoveChannelModal = ({ onClose }) => {
 
   const id = useSelector(selectChannelId)
 
-  const handleSubmit = () => {
-    console.log('handleSubmit')
-    removeChannel(id)
-    onClose()
+  const handleSubmit = async () => {
+    try {
+      await removeChannel(id).unwrap()
+      toast.success(t('channel_removed'))
+      onClose()
+    } catch (err) {
+      console.error('ERROR RemoveChannelModal')
+      handleToastError(err.status, t)
+    }
   }
 
   return (

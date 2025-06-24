@@ -32,6 +32,12 @@ const resources = {
       page_not_found: 'Страница не найдена',
       you_can_go: 'Но вы можете перейти',
       to_main_page: 'на главную страницу',
+      channel_added: 'Канал создан',
+      channel_removed: 'Канал удален',
+      channel_renamed: 'Канал переименован',
+      fetch_error: 'Ошибка сети',
+      parsing_error: 'Ошибка загрузки данных',
+
     },
   },
 }
