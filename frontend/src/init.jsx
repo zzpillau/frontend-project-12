@@ -3,7 +3,7 @@
 // возвращает компонент
 import React from 'react'
 
-import { Provider as RollbarProvider, ErrorBoundary } from '@rollbar/react';
+import { Provider as RollbarProvider, ErrorBoundary } from '@rollbar/react'
 
 import { Provider as StoreProvider } from 'react-redux'
 
@@ -15,18 +15,17 @@ import i18next from 'i18next'
 import { initReactI18next, I18nextProvider } from 'react-i18next'
 import resources from './locales/index.js'
 
-import leoFilter from 'leo-profanity';
+import leoFilter from 'leo-profanity'
 
 import App from '../src/components/App.jsx'
 
 const init = async () => {
-
   const rollbarConfig = {
     accessToken: import.meta.env.VITE_ROLLBAR_TOKEN,
     environment: 'production',
     captureUncaught: true,
     captureUnhandledRejections: true,
-  };
+  }
 
   await i18next
     .use(initReactI18next)

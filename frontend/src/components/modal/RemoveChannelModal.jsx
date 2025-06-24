@@ -11,7 +11,6 @@ import { useTranslation } from 'react-i18next'
 import { toast } from 'react-toastify'
 import handleToastError from '../../helpers/handleToastError.js'
 
-
 const RemoveChannelModal = ({ onClose }) => {
   const { t } = useTranslation()
 
@@ -24,7 +23,8 @@ const RemoveChannelModal = ({ onClose }) => {
       await removeChannel(id).unwrap()
       toast.success(t('channel_removed'))
       onClose()
-    } catch (err) {
+    }
+    catch (err) {
       console.error('ERROR RemoveChannelModal')
       handleToastError(err.status, t)
     }

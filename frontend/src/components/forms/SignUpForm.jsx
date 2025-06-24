@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useContext, useState } from 'react'
+import React, { useEffect, useRef, useContext } from 'react'
 import axios from 'axios'
 
 import AuthContext from '../../contexts/index.js'
@@ -45,7 +45,7 @@ const SignUpForm = () => {
       const route = routes.signup()
       const { username, password } = values
       try {
-        const { data, status } = await axios.post(route, { username, password })
+        const { data } = await axios.post(route, { username, password })
 
         localStorage.setItem(`authToken`, data.token)
         localStorage.setItem('username', data.username)

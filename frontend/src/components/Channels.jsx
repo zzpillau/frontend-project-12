@@ -13,11 +13,10 @@ import { useGetChannelsQuery } from '../api/channelsApi.js'
 import handleToastError from '../helpers/handleToastError.js'
 import { useTranslation } from 'react-i18next'
 
-import leoFilter from 'leo-profanity';
-
+import leoFilter from 'leo-profanity'
 
 const Channels = () => {
-  const {t} = useTranslation()
+  const { t } = useTranslation()
   const { data: channels = [], error, isError } = useGetChannelsQuery()
 
   console.log('channels', channels)
@@ -40,11 +39,11 @@ const Channels = () => {
 
   const activeChannelId = useSelector(selectActiveChannelId)
 
-    useEffect(() => {
-      if (isError) {
-        handleToastError(error.status, t)
-      }
-    }, [isError, error])
+  useEffect(() => {
+    if (isError) {
+      handleToastError(error.status, t)
+    }
+  }, [isError, error])
 
   return (
     <ul
@@ -76,7 +75,7 @@ const Channels = () => {
               )}
             {channel.removable
               && (
-                <Dropdown className="d-flex justify-content-between w-100" as={ButtonGroup} >
+                <Dropdown className="d-flex justify-content-between w-100" as={ButtonGroup}>
                   <Button
                     id={channel.id}
                     type="button"
@@ -85,10 +84,10 @@ const Channels = () => {
                     onClick={e => handleSetActiveId(e)}
                   >
                     <span className="me-1">#</span>
-                  {leoFilter.clean(channel.name)}
+                    {leoFilter.clean(channel.name)}
                   </Button>
                   <Dropdown.Toggle split variant={isActive ? 'secondary' : null} id={`dropdown-${channel.id}`}>
-                    <span class="visually-hidden">{t('channel_management')}</span>
+                    <span className="visually-hidden">{t('channel_management')}</span>
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
                     <Dropdown.Item onClick={() => handleRemoveModal(channel.id)}>{t('remove')}</Dropdown.Item>

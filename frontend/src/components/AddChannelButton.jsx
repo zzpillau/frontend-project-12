@@ -12,7 +12,7 @@ import { actions, selectModalStatus, selectModalType } from '../slices/modalSlic
 import { useTranslation } from 'react-i18next'
 
 const AddChannelButton = () => {
-const {t} = useTranslation()
+  const { t } = useTranslation()
 
   const dispatch = useDispatch()
 

@@ -14,7 +14,6 @@ import RenameChannelForm from '../forms/RenameChannelForm.jsx'
 import { toast } from 'react-toastify'
 import handleToastError from '../../helpers/handleToastError.js'
 
-
 const RenameChannelModal = ({ onClose }) => {
   const { t } = useTranslation()
 
@@ -27,7 +26,8 @@ const RenameChannelModal = ({ onClose }) => {
       await renameChannel({ id, name: values.name }).unwrap()
       toast.success(t('channel_renamed'))
       onClose()
-    } catch (err) {
+    }
+    catch (err) {
       console.error('ERROR RenameChannelModal')
       handleToastError(err.status, t)
     }

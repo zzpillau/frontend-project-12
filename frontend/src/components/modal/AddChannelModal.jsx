@@ -27,7 +27,8 @@ const AddChannelModal = ({ onClose }) => {
         toast.success(t('channel_added'))
         onClose()
       }
-    } catch (err) {
+    }
+    catch (err) {
       console.error('ERROR AddChannelModal')
       handleToastError(err.status, t)
     }

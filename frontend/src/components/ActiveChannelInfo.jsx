@@ -10,8 +10,7 @@ import { selectActiveChannelId } from '../slices/channelsSlice.js'
 
 import { useTranslation } from 'react-i18next'
 
-import leoFilter from 'leo-profanity';
-
+import leoFilter from 'leo-profanity'
 
 const ActiveChannelInfo = () => {
   const { t } = useTranslation()

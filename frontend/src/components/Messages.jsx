@@ -8,11 +8,11 @@ import { selectActiveChannelId } from '../slices/channelsSlice.js'
 import handleToastError from '../helpers/handleToastError.js'
 import { useTranslation } from 'react-i18next'
 
-import leoFilter from 'leo-profanity';
+import leoFilter from 'leo-profanity'
 
 const Messages = () => {
-  const {t} = useTranslation()
-  
+  const { t } = useTranslation()
+
   const { data: messages = [], error, isError } = useGetMessagesQuery()
 
   const messagesRef = useRef(null)
@@ -30,7 +30,7 @@ const Messages = () => {
   const activeChannelId = useSelector(selectActiveChannelId)
 
   const activeChannelMessages = messages.filter(m => m.channelId === activeChannelId) ?? []
-  
+
   return (
     <div id="messages-box" className="chat-messages overflow-auto px-5 text-start">
       {activeChannelMessages.map(m => (
