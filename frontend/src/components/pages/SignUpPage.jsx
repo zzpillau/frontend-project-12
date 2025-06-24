@@ -1,9 +1,10 @@
 import React from 'react'
 
-import LoginForm from '../forms/LoginForm.jsx'
+
+import SignUpForm from '../forms/SignUpForm.jsx'
 import tomato from '../../assets/tomato.png'
 
-const LoginPage = () => {
+const SignUpPage = () => {
   return (
     <div className="container-fluid h-100">
       <div className="row justify-content-center align-items-center h-100">
@@ -14,13 +15,9 @@ const LoginPage = () => {
                 <img src={tomato} alt="tomatoLogo" className="logo logo-spin" />
               </div>
               <div className="col">
-                <LoginForm />
+                <SignUpForm />
               </div>
             </div>
-                          <div className="card-footer p-4">
-                <div className="text-center"><span>Нет аккаунта?</span> <a href="/signup">Регистрация</a></div>
-              </div>
-
           </div>
         </div>
       </div>
@@ -28,4 +25,4 @@ const LoginPage = () => {
   )
 }
 
-export default LoginPage
+export default SignUpPage

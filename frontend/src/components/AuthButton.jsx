@@ -10,8 +10,8 @@ const AuthButton = () => {
 
   return (
     auth.loggedIn
-      ? <Button variant="dark" onClick={auth.logOut}>Log out</Button>
-      : <Button variant="dark" as={Link} to="/login" state={{ from: location }}>Log in</Button>
+      ? <Button variant="primary" onClick={auth.logOut}>Выйти</Button>
+      : <Button variant="primary" as={Link} to="/login" state={{ from: location }}>Войти</Button>
   )
 }
 

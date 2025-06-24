@@ -5,7 +5,7 @@ import { Form } from 'react-bootstrap'
 
 import { useGetChannelsQuery } from '../../api/channelsApi.js'
 
-import channelNameSchema from '../../validationSchemas.js'
+import {channelNameSchema} from '../../validationSchemas.js'
 
 const AddChannelForm = ({ onSubmit }) => {
   const { data: channels } = useGetChannelsQuery()
