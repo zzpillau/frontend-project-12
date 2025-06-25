@@ -7,7 +7,7 @@ import { selectChannelName } from '../../slices/modalSlice.js'
 
 import { useTranslation } from 'react-i18next'
 
-import handleToastError from '../../toast/handleToastError.js'
+import toastify from '../../toast/toastify.js'
 
 import { useFormik } from 'formik'
 import { Form } from 'react-bootstrap'
@@ -41,7 +41,7 @@ const RenameChannelForm = ({ onSubmit }) => {
       }
       catch (err) {
         console.error('Channel rename error occured', err)
-        handleToastError(err.status, t)
+        toastify(t, 'error', err.status)
       }
       finally {
         setSubmitting(false)

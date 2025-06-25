@@ -5,7 +5,7 @@ import { selectChannelId } from '../../slices/modalSlice.js'
 
 import { useTranslation } from 'react-i18next'
 
-import { toast } from 'react-toastify'
+import toastify from '../../toast/toastify.js'
 
 import RenameChannelForm from './RenameChannelForm.jsx'
 
@@ -21,7 +21,7 @@ const RenameChannelModal = ({ onClose, type }) => {
 
   const handleSubmit = async (values) => {
     await renameChannel({ id, name: values.name }).unwrap()
-    toast.success(t('channel_renamed'))
+    toastify(t, 'success', 'channel_renamed')
     onClose()
   }
 

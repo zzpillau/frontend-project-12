@@ -5,8 +5,7 @@ import { setActiveChannelId } from '../../slices/channelsSlice.js'
 
 import { useTranslation } from 'react-i18next'
 
-import { toast } from 'react-toastify'
-
+import toastify from '../../toast/toastify.js'
 import AddChannelForm from './AddChannelForm.jsx'
 
 import CancelButton from './buttons/CancelButton.jsx'
@@ -23,7 +22,7 @@ const AddChannelModal = ({ onClose, type }) => {
     if (newChannel?.name?.trim()) {
       const result = await addChannel(newChannel).unwrap()
       dispatch(setActiveChannelId(result.id))
-      toast.success(t('channel_added'))
+      toastify(t, 'success', 'channel_added')
       onClose()
     }
   }

@@ -38,6 +38,7 @@ const resources = {
       channel_management: 'Управление каналом',
       fetch_error: 'Ошибка соединения',
       parsing_error: 'Ошибка загрузки данных',
+      unauthorized_error: 'Неизвестная ошибка',
       plus: '+',
       hexlet_chat: 'Hexlet Chat',
       modals: {

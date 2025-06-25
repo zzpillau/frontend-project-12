@@ -5,7 +5,8 @@ import { useGetMessagesQuery } from '../../api/messagesApi.js'
 
 import { selectActiveChannelId } from '../../slices/channelsSlice.js'
 
-import handleToastError from '../../toast/handleToastError.js'
+import toastify from '../../toast/toastify.js'
+
 import { useTranslation } from 'react-i18next'
 
 import leoFilter from 'leo-profanity'
@@ -23,7 +24,7 @@ const Messages = () => {
 
   useEffect(() => {
     if (isError) {
-      handleToastError(error.status, t)
+      toastify(t, 'error', error.status)
     }
   }, [isError, error])
 

@@ -9,7 +9,8 @@ import { setActiveChannelId } from '../../slices/channelsSlice.js'
 import { selectActiveChannelId } from '../../slices/channelsSlice.js'
 import { actions } from '../../slices/modalSlice.js'
 
-import handleToastError from '../../toast/handleToastError.js'
+import toastify from '../../toast/toastify.js'
+
 import { useTranslation } from 'react-i18next'
 
 import PrimaryChannelButton from './PrimaryChannelButton.jsx'
@@ -38,7 +39,7 @@ const Channels = () => {
 
   useEffect(() => {
     if (isError) {
-      handleToastError(error.status, t)
+      toastify(t, 'error', error.status)
     }
   }, [isError, error])
 

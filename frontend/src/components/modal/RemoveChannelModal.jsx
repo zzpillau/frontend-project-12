@@ -5,8 +5,7 @@ import { selectChannelId } from '../../slices/modalSlice.js'
 
 import { useTranslation } from 'react-i18next'
 
-import { toast } from 'react-toastify'
-import handleToastError from '../../toast/handleToastError.js'
+import toastify from '../../toast/toastify.js'
 
 import DeleteButton from './buttons/DeleteButton.jsx'
 import CancelButton from './buttons/CancelButton.jsx'
@@ -21,12 +20,12 @@ const RemoveChannelModal = ({ onClose }) => {
   const handleSubmit = async () => {
     try {
       await removeChannel(id).unwrap()
-      toast.success(t('channel_removed'))
+      toastify(t, 'success', 'channel_removed')
       onClose()
     }
     catch (err) {
-      console.error('ERROR RemoveChannelModal')
-      handleToastError(err.status, t)
+      console.error('Channel remove error occured', err)
+      toastify(t, 'error', err.status)
     }
   }
 

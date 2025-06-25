@@ -4,7 +4,7 @@ import { useGetChannelsQuery } from '../../api/channelsApi.js'
 
 import { useTranslation } from 'react-i18next'
 
-import handleToastError from '../../toast/handleToastError.js'
+import toastify from '../../toast/toastify.js'
 
 import { useFormik } from 'formik'
 import { Form } from 'react-bootstrap'
@@ -36,7 +36,7 @@ const AddChannelForm = ({ onSubmit }) => {
       }
       catch (err) {
         console.error('Channel add error occured', err)
-        handleToastError(err.status, t)
+        toastify(t, 'error', err.status)
       }
       finally {
         setSubmitting(false)
