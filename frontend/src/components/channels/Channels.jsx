@@ -2,15 +2,15 @@ import { useEffect } from 'react'
 import cn from 'classnames'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { setActiveChannelId } from '../slices/channelsSlice.js'
-import { selectActiveChannelId } from '../slices/channelsSlice.js'
-import { actions } from '../slices/modalSlice.js'
+import { setActiveChannelId } from '../../slices/channelsSlice.js'
+import { selectActiveChannelId } from '../../slices/channelsSlice.js'
+import { actions } from '../../slices/modalSlice.js'
 
 import { ButtonGroup, Button, Dropdown } from 'react-bootstrap'
 
-import { useGetChannelsQuery } from '../api/channelsApi.js'
+import { useGetChannelsQuery } from '../../api/channelsApi.js'
 
-import handleToastError from '../helpers/handleToastError.js'
+import handleToastError from '../../toast/handleToastError.js'
 import { useTranslation } from 'react-i18next'
 
 import leoFilter from 'leo-profanity'

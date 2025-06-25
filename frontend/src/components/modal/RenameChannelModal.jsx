@@ -7,10 +7,10 @@ import { selectChannelId } from '../../slices/modalSlice.js'
 
 import { useTranslation } from 'react-i18next'
 
-import RenameChannelForm from '../forms/RenameChannelForm.jsx'
+import RenameChannelForm from '../channels/RenameChannelForm.jsx'
 
 import { toast } from 'react-toastify'
-import handleToastError from '../../helpers/handleToastError.js'
+import handleToastError from '../../toast/handleToastError.js'
 
 const RenameChannelModal = ({ onClose }) => {
   const { t } = useTranslation()

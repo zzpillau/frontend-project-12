@@ -1,9 +1,9 @@
-import Channels from '../Channels.jsx'
-import Messages from '../Messages.jsx'
-import MessageForm from '../forms/MessageForm.jsx'
+import Channels from '../channels/Channels.jsx'
+import Messages from '../messages/Messages.jsx'
+import MessageForm from '../messages/MessageForm.jsx'
 
-import ActiveChannelInfo from '../ActiveChannelInfo.jsx'
-import AddChannelButton from '../AddChannelButton.jsx'
+import ActiveChannelInfo from '../channels/ActiveChannelInfo.jsx'
+import AddChannelButton from '../channels/AddChannelButton.jsx'
 
 import { useTranslation } from 'react-i18next'
 

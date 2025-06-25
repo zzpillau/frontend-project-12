@@ -1,11 +1,11 @@
 import { useRef, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-import { useGetMessagesQuery } from '../api/messagesApi.js'
+import { useGetMessagesQuery } from '../../api/messagesApi.js'
 
-import { selectActiveChannelId } from '../slices/channelsSlice.js'
+import { selectActiveChannelId } from '../../slices/channelsSlice.js'
 
-import handleToastError from '../helpers/handleToastError.js'
+import handleToastError from '../../toast/handleToastError.js'
 import { useTranslation } from 'react-i18next'
 
 import leoFilter from 'leo-profanity'

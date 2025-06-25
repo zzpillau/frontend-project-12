@@ -11,7 +11,7 @@ import { setCredentials } from '../../slices/authSlice.js'
 import { useFormik } from 'formik'
 import { Form, Button } from 'react-bootstrap'
 
-import { signUpSchema } from '../../validationSchemas.js'
+import { signUpSchema } from '../../validation/validationSchemas.js'
 
 import { useTranslation } from 'react-i18next'
 

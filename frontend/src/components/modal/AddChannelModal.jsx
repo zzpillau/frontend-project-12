@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 
-import AddChannelForm from '../forms/AddChannelForm.jsx'
+import AddChannelForm from '../channels/AddChannelForm.jsx'
 
 import { useAddChannelMutation } from '../../api/channelsApi.js'
 import { useDispatch } from 'react-redux'
@@ -9,7 +9,7 @@ import { setActiveChannelId } from '../../slices/channelsSlice.js'
 import { useTranslation } from 'react-i18next'
 
 import { toast } from 'react-toastify'
-import handleToastError from '../../helpers/handleToastError.js'
+import handleToastError from '../../toast/handleToastError.js'
 
 const AddChannelModal = ({ onClose }) => {
   const { t } = useTranslation()

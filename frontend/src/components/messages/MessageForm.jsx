@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 
 import { useSelector } from 'react-redux'
 
-import { selectUsername } from '../../slices/authSlice'
+import { selectUsername } from '../../slices/authSlice.js'
 import { selectActiveChannelId } from '../../slices/channelsSlice.js'
 
 import { useFormik } from 'formik'

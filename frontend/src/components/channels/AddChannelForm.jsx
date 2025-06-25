@@ -5,13 +5,12 @@ import { Form } from 'react-bootstrap'
 
 import { useGetChannelsQuery } from '../../api/channelsApi.js'
 
-import { channelNameSchema } from '../../validationSchemas.js'
-import { useSelector } from 'react-redux'
-import { selectChannelName } from '../../slices/modalSlice.js'
+import { channelNameSchema } from '../../validation/validationSchemas.js'
 import { useTranslation } from 'react-i18next'
 
-const RenameChannelForm = ({ onSubmit }) => {
+const AddChannelForm = ({ onSubmit }) => {
   const { t } = useTranslation()
+
   const { data: channels } = useGetChannelsQuery()
 
   const inputRef = useRef(null)
@@ -22,11 +21,9 @@ const RenameChannelForm = ({ onSubmit }) => {
 
   const existingChannelsNames = channels?.map(c => c.name) || []
 
-  const oldName = useSelector(selectChannelName)
-
   const formik = useFormik({
     initialValues: {
-      name: oldName,
+      name: '',
     },
     validationSchema: channelNameSchema(existingChannelsNames, t),
     onSubmit: (values, { resetForm, setSubmitting }) => {
@@ -40,7 +37,7 @@ const RenameChannelForm = ({ onSubmit }) => {
 
   return (
     <Form
-      id="rename-channel-form"
+      id="add-channel-form"
       onSubmit={formik.handleSubmit}
       noValidate
     >
@@ -66,4 +63,4 @@ const RenameChannelForm = ({ onSubmit }) => {
   )
 }
 
-export default RenameChannelForm
+export default AddChannelForm

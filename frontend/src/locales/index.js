@@ -41,6 +41,7 @@ const resources = {
       fetch_error: 'Ошибка соединения',
       parsing_error: 'Ошибка загрузки данных',
       plus: '+',
+      hexlet_chat: 'Hexlet Chat',
     },
   },
 }

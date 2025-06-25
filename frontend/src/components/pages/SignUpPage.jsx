@@ -1,4 +1,4 @@
-import SignUpForm from '../forms/SignUpForm.jsx'
+import SignUpForm from '../auth/SignUpForm.jsx'
 import tomato from '../../assets/tomato.png'
 
 const SignUpPage = () => {

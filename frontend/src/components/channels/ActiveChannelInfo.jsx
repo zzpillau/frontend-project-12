@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux'
 
-import { useGetChannelsQuery } from '../api/channelsApi.js'
+import { useGetChannelsQuery } from '../../api/channelsApi.js'
 
-import { useGetMessagesQuery } from '../api/messagesApi.js'
+import { useGetMessagesQuery } from '../../api/messagesApi.js'
 
-import { selectActiveChannelId } from '../slices/channelsSlice.js'
+import { selectActiveChannelId } from '../../slices/channelsSlice.js'
 
 import { useTranslation } from 'react-i18next'
 
