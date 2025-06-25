@@ -2,7 +2,8 @@ import * as Yup from 'yup'
 
 export const channelNameSchema = (existingChannelsNames, t) => {
   return Yup.object().shape({
-    name: Yup.string().trim().strict(true)
+    name: Yup.string()
+      .trim()
       .notOneOf(existingChannelsNames, t('must_be_unique'))
       .min(3, t('name_length_hint'))
       .max(20, t('name_length_hint'))
@@ -12,7 +13,8 @@ export const channelNameSchema = (existingChannelsNames, t) => {
 
 export const signUpSchema = (t) => {
   return Yup.object().shape({
-    username: Yup.string().trim().strict(true)
+    username: Yup.string()
+      .trim()
       .min(3, t('name_length_hint'))
       .max(20, t('name_length_hint'))
       .required(t('required')),

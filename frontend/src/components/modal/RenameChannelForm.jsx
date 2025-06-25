@@ -36,7 +36,7 @@ const RenameChannelForm = ({ onSubmit }) => {
     validationSchema: channelNameSchema(existingChannelsNames, t),
     onSubmit: async (values, { resetForm, setSubmitting }) => {
       try {
-        await onSubmit(values)
+        await onSubmit({name: values.name.trim()})
         resetForm()
       }
       catch (err) {

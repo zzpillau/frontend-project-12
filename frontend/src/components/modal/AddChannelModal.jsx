@@ -6,8 +6,8 @@ import { setActiveChannelId } from '../../slices/channelsSlice.js'
 import { useTranslation } from 'react-i18next'
 
 import toastify from '../../toast/toastify.js'
-import AddChannelForm from './AddChannelForm.jsx'
 
+import AddChannelForm from './AddChannelForm.jsx'
 import CancelButton from './buttons/CancelButton.jsx'
 import SubmitButton from './buttons/SubmitButton.jsx'
 

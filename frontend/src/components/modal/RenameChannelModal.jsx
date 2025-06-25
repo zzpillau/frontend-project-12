@@ -8,7 +8,6 @@ import { useTranslation } from 'react-i18next'
 import toastify from '../../toast/toastify.js'
 
 import RenameChannelForm from './RenameChannelForm.jsx'
-
 import CancelButton from './buttons/CancelButton.jsx'
 import SubmitButton from './buttons/SubmitButton.jsx'
 
