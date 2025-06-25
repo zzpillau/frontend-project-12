@@ -1,16 +1,19 @@
-import Button from 'react-bootstrap/Button'
-import Modal from 'react-bootstrap/Modal'
+import { useSelector } from 'react-redux'
 
 import { useRenameChannelMutation } from '../../api/channelsApi.js'
-import { useSelector } from 'react-redux'
 import { selectChannelId } from '../../slices/modalSlice.js'
 
 import { useTranslation } from 'react-i18next'
 
-import RenameChannelForm from '../channels/RenameChannelForm.jsx'
-
 import { toast } from 'react-toastify'
 import handleToastError from '../../toast/handleToastError.js'
+
+import Modal from 'react-bootstrap/Modal'
+
+import RenameChannelForm from '../channels/RenameChannelForm.jsx'
+
+import CancelButton from './buttons/CancelButton.jsx'
+import SubmitButton from './buttons/SubmitButton.jsx'
 
 const RenameChannelModal = ({ onClose }) => {
   const { t } = useTranslation()
@@ -31,6 +34,8 @@ const RenameChannelModal = ({ onClose }) => {
     }
   }
 
+  const formId = 'rename-channel-form'
+
   return (
     <>
       <Modal.Header closeButton>
@@ -39,12 +44,8 @@ const RenameChannelModal = ({ onClose }) => {
       <Modal.Body>
         <RenameChannelForm onSubmit={handleSubmit} />
         <div className="d-flex justify-content-end">
-          <Button variant="secondary" className="me-2" disabled={isLoading} onClick={onClose}>
-            {t('reject')}
-          </Button>
-          <Button type="submit" form="rename-channel-form" variant="primary" disabled={isLoading}>
-            {t('send')}
-          </Button>
+          <CancelButton disabled={isLoading} onClick={onClose} />
+          <SubmitButton disabled={isLoading} form={formId} />
         </div>
       </Modal.Body>
     </>

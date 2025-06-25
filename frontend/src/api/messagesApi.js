@@ -1,11 +1,13 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
+import routes from '../routes/'
+
 export const messagesApi = createApi({
   reducerPath: 'messagesApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: '/api/v1/messages',
+    baseUrl: routes.messages(),
     prepareHeaders: (headers) => {
-      const token = localStorage.getItem('authToken')
+      const token = localStorage.getItem('token')
       if (token) {
         headers.set('Authorization', `Bearer ${token}`)
       }
@@ -23,20 +25,6 @@ export const messagesApi = createApi({
         body: newMessage,
       }),
     }),
-    // editMessage: builder.mutation({
-    //   query: (id, body) => ({
-    //     url: id,
-    //     method: 'PATCH',
-    //     body,
-    //   }),
-    // }),
-    // removeMessage: builder.mutation({
-    //   query: id => ({
-    //     url: id,
-    //     method: 'DELETE',
-    //   }),
-    // }),
-
   }),
 })
 
@@ -44,10 +32,6 @@ const messageUpdateHelpers = {
   addMessage: message => (draft) => {
     draft.push(message)
   },
-  // removeMessage: id => (draft) => {
-  //   return draft.filter(msg => msg.id !== id)
-  // },
-  // // editMessage
 }
 
 export { messageUpdateHelpers }
@@ -55,6 +39,4 @@ export { messageUpdateHelpers }
 export const {
   useGetMessagesQuery,
   useAddMessageMutation,
-  // useEditMessageMutation,
-  // useRemoveMessageMutation,
 } = messagesApi

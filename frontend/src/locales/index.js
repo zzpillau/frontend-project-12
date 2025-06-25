@@ -2,6 +2,7 @@ const resources = {
   ru: {
     translation: {
       login: 'Войти',
+      logout: 'Выйти',
       nickname: 'Ваш ник',
       username: 'Имя пользователя',
       password: 'Пароль',

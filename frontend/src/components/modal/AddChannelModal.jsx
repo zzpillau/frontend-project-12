@@ -1,21 +1,26 @@
-import Button from 'react-bootstrap/Button'
-import Modal from 'react-bootstrap/Modal'
-
-import AddChannelForm from '../channels/AddChannelForm.jsx'
+import { useDispatch } from 'react-redux'
 
 import { useAddChannelMutation } from '../../api/channelsApi.js'
-import { useDispatch } from 'react-redux'
 import { setActiveChannelId } from '../../slices/channelsSlice.js'
+
 import { useTranslation } from 'react-i18next'
 
 import { toast } from 'react-toastify'
 import handleToastError from '../../toast/handleToastError.js'
 
+import Modal from 'react-bootstrap/Modal'
+
+import AddChannelForm from '../channels/AddChannelForm.jsx'
+
+import CancelButton from './buttons/CancelButton.jsx'
+import SubmitButton from './buttons/SubmitButton.jsx'
+
 const AddChannelModal = ({ onClose }) => {
   const { t } = useTranslation()
 
-  const [addChannel, { isLoading }] = useAddChannelMutation()
   const dispatch = useDispatch()
+
+  const [addChannel, { isLoading }] = useAddChannelMutation()
 
   const handleSubmit = async (newChannel) => {
     try {
@@ -27,10 +32,12 @@ const AddChannelModal = ({ onClose }) => {
       }
     }
     catch (err) {
-      console.error('ERROR AddChannelModal')
+      console.error('Add Channel error ocurred', err)
       handleToastError(err.status, t)
     }
   }
+
+  const formId = 'add-channel-form'
 
   return (
     <>
@@ -40,12 +47,8 @@ const AddChannelModal = ({ onClose }) => {
       <Modal.Body>
         <AddChannelForm onSubmit={handleSubmit} />
         <div className="d-flex justify-content-end">
-          <Button variant="secondary" className="me-2" disabled={isLoading} onClick={onClose}>
-            {t('reject')}
-          </Button>
-          <Button type="submit" disabled={isLoading} form="add-channel-form" variant="primary">
-            {t('send')}
-          </Button>
+          <CancelButton disabled={isLoading} onClick={onClose} />
+          <SubmitButton disabled={isLoading} form={formId} />
         </div>
       </Modal.Body>
     </>

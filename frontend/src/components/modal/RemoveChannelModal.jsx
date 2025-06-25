@@ -1,13 +1,17 @@
-import Button from 'react-bootstrap/Button'
-import Modal from 'react-bootstrap/Modal'
+import { useSelector } from 'react-redux'
 
 import { useRemoveChannelMutation } from '../../api/channelsApi.js'
-import { useSelector } from 'react-redux'
 import { selectChannelId } from '../../slices/modalSlice.js'
+
 import { useTranslation } from 'react-i18next'
 
 import { toast } from 'react-toastify'
 import handleToastError from '../../toast/handleToastError.js'
+
+import Modal from 'react-bootstrap/Modal'
+
+import DeleteButton from './buttons/DeleteButton.jsx'
+import CancelButton from './buttons/CancelButton.jsx'
 
 const RemoveChannelModal = ({ onClose }) => {
   const { t } = useTranslation()
@@ -36,12 +40,8 @@ const RemoveChannelModal = ({ onClose }) => {
       <Modal.Body>
         <p className="lead">{t('confirm')}</p>
         <div className="d-flex justify-content-end">
-          <Button variant="secondary" className="me-2" disabled={isLoading} onClick={onClose}>
-            {t('reject')}
-          </Button>
-          <Button variant="danger" disabled={isLoading} onClick={handleSubmit}>
-            {t('remove')}
-          </Button>
+          <CancelButton disabled={isLoading} onClick={onClose} />
+          <DeleteButton disabled={isLoading} onClick={handleSubmit} />
         </div>
       </Modal.Body>
     </>

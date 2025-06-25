@@ -3,10 +3,10 @@ import { Navbar, Container } from 'react-bootstrap'
 
 import { useTranslation } from 'react-i18next'
 
-import AuthButton from '../auth/AuthButton.jsx'
+import AuthButton from './AuthButton.jsx'
 
 const Header = () => {
-  const {t} = useTranslation()
+  const { t } = useTranslation()
   const { pathname } = useLocation()
   const showLogin = pathname === '/'
 

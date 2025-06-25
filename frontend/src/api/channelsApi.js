@@ -1,15 +1,15 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-import { setActiveChannelId } from '../slices/channelsSlice.js'
+import routes from '../routes/'
 
-// TODO rename endpoint
+import { setActiveChannelId } from '../slices/channelsSlice.js'
 
 export const channelsApi = createApi({
   reducerPath: 'channelsApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: '/api/v1/channels',
+    baseUrl: routes.channels(),
     prepareHeaders: (headers) => {
-      const token = localStorage.getItem('authToken')
+      const token = localStorage.getItem('token')
       if (token) {
         headers.set('Authorization', `Bearer ${token}`)
       }
@@ -55,13 +55,13 @@ export const createChannelsUpdateHelpers = store => ({
     draft.push(channel)
   },
   removeChannel: ({ id }) => (draft) => {
-    const index = draft.findIndex(c => c.id === id)
+    const index = draft.findIndex(c => c.id === id && c.removable)
     if (index !== -1) {
       draft.splice(index, 1)
       store.dispatch(setActiveChannelId(draft[0]?.id ?? null))
     }
     else {
-      console.warn('Канал не найден для удаления:', id)
+      console.warn('Channel not found', id)
     }
   },
   renameChannel: ({ id, name }) => (draft) => {

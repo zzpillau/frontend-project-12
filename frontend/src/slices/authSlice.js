@@ -8,8 +8,8 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setCredentials: (state, { payload: { username } }) => {
-      state.username = username
+    setCredentials: (state, { payload }) => {
+      state.username = payload
     },
   },
 })

@@ -1,25 +1,32 @@
 import { useEffect, useRef, useContext, useState } from 'react'
-import axios from 'axios'
 import { useDispatch } from 'react-redux'
+
+import { useLocation, useNavigate } from 'react-router-dom'
+
+import axios from 'axios'
+import routes from '../../routes'
+
 import AuthContext from '../../contexts/index.js'
 
 import { setCredentials } from '../../slices/authSlice.js'
 
-import { useLocation, useNavigate } from 'react-router-dom'
-import routes from '../../routes/routes.js'
-
-import { useFormik } from 'formik'
-import { Button, Form } from 'react-bootstrap'
-
 import { useTranslation } from 'react-i18next'
 
+import { useFormik } from 'formik'
+import { Form } from 'react-bootstrap'
+import SubmitAuthButton from './SubmitAuthButton.jsx'
+
+import { saveAuthData } from '../../utils/authData.js'
+
 const LoginForm = () => {
+  const { t } = useTranslation()
+
   const [authFailed, setAuthFailed] = useState(false)
 
   const auth = useContext(AuthContext)
-  const { t } = useTranslation()
 
   const dispatch = useDispatch()
+
   const location = useLocation()
   const navigate = useNavigate()
 
@@ -34,26 +41,27 @@ const LoginForm = () => {
       username: '',
       password: '',
     },
-    onSubmit: async (values) => {
+    onSubmit: async (values, { setSubmitting }) => {
       setAuthFailed(false)
 
       try {
         const { data } = await axios.post(routes.login(), { ...values })
 
-        localStorage.setItem(`authToken`, data.token)
-        localStorage.setItem('username', data.username)
+        saveAuthData(data)
 
-        dispatch(setCredentials({ username: data.username }))
+        dispatch(setCredentials(data.username))
 
         auth.logIn()
 
-        const from = location.state?.from?.pathname || '/'
+        const from = location.state?.from?.pathname || routes.mainPage()
         navigate(from)
       }
-      catch (error) {
-        formik.setSubmitting(false)
-        console.error('Authentification error', error)
+      catch (err) {
+        console.error('Authentification error occured', err)
         setAuthFailed(true)
+      }
+      finally {
+        setSubmitting(false)
       }
     },
   })
@@ -90,7 +98,7 @@ const LoginForm = () => {
         <Form.Label htmlFor="password">{t('password')}</Form.Label>
         <Form.Control.Feedback type="invalid">{t('invalid_password_or_name')}</Form.Control.Feedback>
       </Form.Group>
-      <Button type="submit" variant="outline-primary" className="w-100 ">{t('login')}</Button>
+      <SubmitAuthButton title={t('login')} />
     </Form>
   )
 }

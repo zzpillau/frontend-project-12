@@ -1,4 +1,5 @@
 import Modal from 'react-bootstrap/Modal'
+
 import getModalComponent from '.'
 
 const ModalLayout = ({ show, onHide, type }) => {
