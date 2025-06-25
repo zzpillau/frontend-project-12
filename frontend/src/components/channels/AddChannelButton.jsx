@@ -1,20 +1,18 @@
 import { useDispatch, useSelector } from 'react-redux'
 
-import ModalLayout from '../modal/ModalLayout.jsx'
+import { actions, selectModalStatus, selectModalType } from '../../slices/modalSlice.js'
 
 import { Button } from 'react-bootstrap'
 import { PlusSquare } from 'react-bootstrap-icons'
 
-import { actions, selectModalStatus, selectModalType } from '../../slices/modalSlice.js'
-
 import { useTranslation } from 'react-i18next'
+
+import ModalLayout from '../modal/ModalLayout.jsx'
 
 const AddChannelButton = () => {
   const { t } = useTranslation()
 
   const dispatch = useDispatch()
-
-  const showModal = useSelector(selectModalStatus)
 
   const openModal = () => {
     dispatch(actions.openModal({ modalType: 'add' }))
@@ -22,6 +20,7 @@ const AddChannelButton = () => {
 
   const handleClose = () => dispatch(actions.closeModal())
 
+  const showModal = useSelector(selectModalStatus)
   const modalType = useSelector(selectModalType)
 
   return (

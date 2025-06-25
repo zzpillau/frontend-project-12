@@ -6,7 +6,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import routes from '../../routes'
 
-import AuthContext from '../../contexts/index.js'
+import AuthContext from '../../contexts'
 
 import { setCredentials } from '../../slices/authSlice.js'
 

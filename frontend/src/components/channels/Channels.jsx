@@ -1,25 +1,25 @@
 import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
 import cn from 'classnames'
 
-import { useDispatch, useSelector } from 'react-redux'
+import { useGetChannelsQuery } from '../../api/channelsApi.js'
+
 import { setActiveChannelId } from '../../slices/channelsSlice.js'
 import { selectActiveChannelId } from '../../slices/channelsSlice.js'
 import { actions } from '../../slices/modalSlice.js'
 
-import { ButtonGroup, Button, Dropdown } from 'react-bootstrap'
-
-import { useGetChannelsQuery } from '../../api/channelsApi.js'
-
 import handleToastError from '../../toast/handleToastError.js'
 import { useTranslation } from 'react-i18next'
 
-import leoFilter from 'leo-profanity'
+import PrimaryChannelButton from './PrimaryChannelButton.jsx'
+import CustomChannelButton from './CustomChannelButton.jsx'
 
 const Channels = () => {
   const { t } = useTranslation()
-  const { data: channels = [], error, isError } = useGetChannelsQuery()
 
-  console.log('channels', channels)
+  const { data: channels = [], isError, error } = useGetChannelsQuery()
+
   const dispatch = useDispatch()
 
   const handleSetActiveId = (e) => {
@@ -27,13 +27,10 @@ const Channels = () => {
   }
 
   const handleRemoveModal = (id) => {
-    console.log('handleRemoveModal')
-
     dispatch(actions.openModal({ modalType: 'remove', channelId: id }))
   }
 
   const handleRenameModal = (id, name) => {
-    console.log('handleRenameModal', { modalType: 'rename', channelId: id, channelName: name })
     dispatch(actions.openModal({ modalType: 'rename', channelId: id, channelName: name }))
   }
 
@@ -59,42 +56,26 @@ const Channels = () => {
 
         return (
           <li key={channel.id} className="nav-item w-100">
-
-            {!channel.removable
-              && (
-                <Button
-                  id={channel.id}
-                  type="button"
-                  variant="null"
-                  className={classes}
-                  onClick={e => handleSetActiveId(e)}
-                >
-                  <span className="me-1">#</span>
-                  {leoFilter.clean(channel.name)}
-                </Button>
-              )}
             {channel.removable
-              && (
-                <Dropdown className="d-flex justify-content-between w-100" as={ButtonGroup}>
-                  <Button
+              ? (
+                  <CustomChannelButton
                     id={channel.id}
-                    type="button"
-                    variant="null"
-                    className={classes}
+                    classes={classes}
                     onClick={e => handleSetActiveId(e)}
-                  >
-                    <span className="me-1">#</span>
-                    {leoFilter.clean(channel.name)}
-                  </Button>
-                  <Dropdown.Toggle split variant={isActive ? 'secondary' : null} id={`dropdown-${channel.id}`}>
-                    <span className="visually-hidden">{t('channel_management')}</span>
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <Dropdown.Item onClick={() => handleRemoveModal(channel.id)}>{t('remove')}</Dropdown.Item>
-                    <Dropdown.Item onClick={() => handleRenameModal(channel.id, channel.name)}>{t('rename')}</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-              )}
+                    channelName={channel.name}
+                    isActive={isActive}
+                    handleRemoveModal={() => handleRemoveModal(channel.id)}
+                    handleRenameModal={() => handleRenameModal(channel.id, channel.name)}
+                  />
+                )
+              : (
+                  <PrimaryChannelButton
+                    id={channel.id}
+                    classes={classes}
+                    onClick={e => handleSetActiveId(e)}
+                    channelName={channel.name}
+                  />
+                )}
           </li>
         )
       },

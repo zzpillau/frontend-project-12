@@ -1,17 +1,21 @@
 import { useRef, useEffect } from 'react'
+import { useSelector } from 'react-redux'
+
+import { useGetChannelsQuery } from '../../api/channelsApi.js'
+
+import { selectChannelName } from '../../slices/modalSlice.js'
+
+import { useTranslation } from 'react-i18next'
+
+import handleToastError from '../../toast/handleToastError.js'
 
 import { useFormik } from 'formik'
 import { Form } from 'react-bootstrap'
 
-import { useGetChannelsQuery } from '../../api/channelsApi.js'
-
 import { channelNameSchema } from '../../validation/validationSchemas.js'
-import { useTranslation } from 'react-i18next'
 
-const AddChannelForm = ({ onSubmit }) => {
+const RenameChannelForm = ({ onSubmit }) => {
   const { t } = useTranslation()
-
-  const { data: channels } = useGetChannelsQuery()
 
   const inputRef = useRef(null)
 
@@ -19,17 +23,29 @@ const AddChannelForm = ({ onSubmit }) => {
     inputRef.current?.focus()
   }, [])
 
+  const { data: channels } = useGetChannelsQuery()
+
   const existingChannelsNames = channels?.map(c => c.name) || []
+
+  const oldName = useSelector(selectChannelName)
 
   const formik = useFormik({
     initialValues: {
-      name: '',
+      name: oldName,
     },
     validationSchema: channelNameSchema(existingChannelsNames, t),
-    onSubmit: (values, { resetForm, setSubmitting }) => {
-      setSubmitting(false)
-      onSubmit(values)
-      resetForm()
+    onSubmit: async (values, { resetForm, setSubmitting }) => {
+      try {
+        await onSubmit(values)
+        resetForm()
+      }
+      catch (err) {
+        console.error('Channel rename error occured', err)
+        handleToastError(err.status, t)
+      }
+      finally {
+        setSubmitting(false)
+      }
     },
     validateOnChange: false,
     validateOnBlur: false,
@@ -37,7 +53,7 @@ const AddChannelForm = ({ onSubmit }) => {
 
   return (
     <Form
-      id="add-channel-form"
+      id="rename"
       onSubmit={formik.handleSubmit}
       noValidate
     >
@@ -63,4 +79,4 @@ const AddChannelForm = ({ onSubmit }) => {
   )
 }
 
-export default AddChannelForm
+export default RenameChannelForm

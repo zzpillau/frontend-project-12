@@ -1,18 +1,18 @@
 import { useRef, useEffect } from 'react'
 
+import { useGetChannelsQuery } from '../../api/channelsApi.js'
+
+import { useTranslation } from 'react-i18next'
+
+import handleToastError from '../../toast/handleToastError.js'
+
 import { useFormik } from 'formik'
 import { Form } from 'react-bootstrap'
 
-import { useGetChannelsQuery } from '../../api/channelsApi.js'
-
 import { channelNameSchema } from '../../validation/validationSchemas.js'
-import { useSelector } from 'react-redux'
-import { selectChannelName } from '../../slices/modalSlice.js'
-import { useTranslation } from 'react-i18next'
 
-const RenameChannelForm = ({ onSubmit }) => {
+const AddChannelForm = ({ onSubmit }) => {
   const { t } = useTranslation()
-  const { data: channels } = useGetChannelsQuery()
 
   const inputRef = useRef(null)
 
@@ -20,19 +20,27 @@ const RenameChannelForm = ({ onSubmit }) => {
     inputRef.current?.focus()
   }, [])
 
-  const existingChannelsNames = channels?.map(c => c.name) || []
+  const { data: channels } = useGetChannelsQuery()
 
-  const oldName = useSelector(selectChannelName)
+  const existingChannelsNames = channels?.map(c => c.name) || []
 
   const formik = useFormik({
     initialValues: {
-      name: oldName,
+      name: '',
     },
     validationSchema: channelNameSchema(existingChannelsNames, t),
-    onSubmit: (values, { resetForm, setSubmitting }) => {
-      setSubmitting(false)
-      onSubmit(values)
-      resetForm()
+    onSubmit: async (values, { resetForm, setSubmitting }) => {
+      try {
+        await onSubmit(values)
+        resetForm()
+      }
+      catch (err) {
+        console.error('Channel add error occured', err)
+        handleToastError(err.status, t)
+      }
+      finally {
+        setSubmitting(false)
+      }
     },
     validateOnChange: false,
     validateOnBlur: false,
@@ -40,7 +48,7 @@ const RenameChannelForm = ({ onSubmit }) => {
 
   return (
     <Form
-      id="rename-channel-form"
+      id="add"
       onSubmit={formik.handleSubmit}
       noValidate
     >
@@ -66,4 +74,4 @@ const RenameChannelForm = ({ onSubmit }) => {
   )
 }
 
-export default RenameChannelForm
+export default AddChannelForm

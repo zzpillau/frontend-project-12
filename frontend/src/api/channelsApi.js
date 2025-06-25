@@ -4,12 +4,14 @@ import routes from '../routes/'
 
 import { setActiveChannelId } from '../slices/channelsSlice.js'
 
+import { getAuthToken } from '../utils/authData.js'
+
 export const channelsApi = createApi({
   reducerPath: 'channelsApi',
   baseQuery: fetchBaseQuery({
     baseUrl: routes.channels(),
     prepareHeaders: (headers) => {
-      const token = localStorage.getItem('token')
+      const token = getAuthToken()
       if (token) {
         headers.set('Authorization', `Bearer ${token}`)
       }
