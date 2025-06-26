@@ -17,6 +17,7 @@ const resources = {
         password_length_hint: 'Не менее 6 символов',
         passwords_match: 'Пароли должны совпадать',
         required: 'Обязательное поле',
+        loading: 'Авторизация выполняется...',
       },
       chat: {
         channels: 'Каналы',

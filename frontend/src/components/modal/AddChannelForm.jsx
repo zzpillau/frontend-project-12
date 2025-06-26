@@ -1,15 +1,12 @@
 import { useRef, useEffect } from 'react'
-
-import { useGetChannelsQuery } from '../../api/channelsApi.js'
-
 import { useTranslation } from 'react-i18next'
-
-import toastify from '../../toast/toastify.js'
-
 import { useFormik } from 'formik'
 import { Form } from 'react-bootstrap'
 
+import { useGetChannelsQuery } from '../../api/channelsApi.js'
+
 import { channelNameSchema } from '../../validation/validationSchemas.js'
+import toastify from '../../toast/toastify.js'
 
 const AddChannelForm = ({ onSubmit }) => {
   const { t } = useTranslation()

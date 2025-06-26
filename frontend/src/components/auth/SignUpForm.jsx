@@ -1,24 +1,18 @@
+import axios from 'axios'
 import { useEffect, useRef, useContext } from 'react'
 import { useDispatch } from 'react-redux'
-
 import { useNavigate } from 'react-router-dom'
-
-import axios from 'axios'
-import routes from '../../routes'
-
-import AuthContext from '../../contexts/index.js'
-
-import { setCredentials } from '../../slices/authSlice.js'
-
 import { useTranslation } from 'react-i18next'
-
 import { useFormik } from 'formik'
 import { Form } from 'react-bootstrap'
-import SubmitAuthButton from './SubmitAuthButton.jsx'
 
 import { signUpSchema } from '../../validation/validationSchemas.js'
-
+import routes from '../../routes'
+import AuthContext from '../../contexts/index.js'
+import { setCredentials } from '../../slices/authSlice.js'
 import { saveAuthData } from '../../utils/authData.js'
+
+import SubmitAuthButton from './SubmitAuthButton.jsx'
 
 const SignUpForm = () => {
   const { t } = useTranslation()

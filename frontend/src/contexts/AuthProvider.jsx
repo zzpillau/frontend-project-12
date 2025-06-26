@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 
 import AuthContext from '.'
-
 import { getAuthToken, removeAuthToken } from '../utils/authData.js'
 
 const AuthProvider = ({ children }) => {

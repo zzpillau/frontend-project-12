@@ -1,9 +1,8 @@
 import { useDispatch } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 
 import { useAddChannelMutation } from '../../api/channelsApi.js'
 import { setActiveChannelId } from '../../slices/channelsSlice.js'
-
-import { useTranslation } from 'react-i18next'
 
 import toastify from '../../toast/toastify.js'
 

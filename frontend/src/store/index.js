@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
+
+import { channelsApi } from '../api/channelsApi.js'
+import { messagesApi } from '../api/messagesApi.js'
 import authReducer from '../slices/authSlice.js'
 import channelsReducer from '../slices/channelsSlice.js'
 import modalReducer from '../slices/modalSlice.js'
-import { channelsApi } from '../api/channelsApi.js'
-import { messagesApi } from '../api/messagesApi.js'
 
 export default configureStore({
   reducer: {

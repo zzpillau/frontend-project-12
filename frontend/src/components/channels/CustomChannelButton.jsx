@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
-
 import { Dropdown, ButtonGroup } from 'react-bootstrap'
+
 import PrimaryChannelButton from './PrimaryChannelButton.jsx'
 
 const CustomChannelButton = (props) => {

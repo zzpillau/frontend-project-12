@@ -1,13 +1,10 @@
 import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
+import leoFilter from 'leo-profanity'
 
 import { useGetChannelsQuery } from '../../api/channelsApi.js'
 import { useGetMessagesQuery } from '../../api/messagesApi.js'
-
 import { selectActiveChannelId } from '../../slices/channelsSlice.js'
-
-import { useTranslation } from 'react-i18next'
-
-import leoFilter from 'leo-profanity'
 
 const ActiveChannelInfo = () => {
   const { t } = useTranslation()

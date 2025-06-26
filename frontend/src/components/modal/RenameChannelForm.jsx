@@ -1,18 +1,14 @@
 import { useRef, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-
-import { useGetChannelsQuery } from '../../api/channelsApi.js'
-
-import { selectChannelName } from '../../slices/modalSlice.js'
-
 import { useTranslation } from 'react-i18next'
-
-import toastify from '../../toast/toastify.js'
-
 import { useFormik } from 'formik'
 import { Form } from 'react-bootstrap'
 
+import { useGetChannelsQuery } from '../../api/channelsApi.js'
+import { selectChannelName } from '../../slices/modalSlice.js'
+
 import { channelNameSchema } from '../../validation/validationSchemas.js'
+import toastify from '../../toast/toastify.js'
 
 const RenameChannelForm = ({ onSubmit }) => {
   const { t } = useTranslation()

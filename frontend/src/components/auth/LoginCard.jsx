@@ -1,10 +1,9 @@
 import { Card, Col, Image } from 'react-bootstrap'
+import { useTranslation } from 'react-i18next'
 
 import tomato from '../../assets/tomato.png'
 
-import { useTranslation } from 'react-i18next'
-
-import LoginForm from './LoginForm'
+import LoginForm from './LoginForm.jsx'
 
 const LoginCard = () => {
   const { t } = useTranslation()

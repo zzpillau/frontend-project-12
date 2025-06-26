@@ -1,7 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 import routes from '../routes/'
-
 import { getAuthToken } from '../utils/authData.js'
 
 export const messagesApi = createApi({

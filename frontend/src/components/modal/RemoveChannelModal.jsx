@@ -1,9 +1,8 @@
 import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 
 import { useRemoveChannelMutation } from '../../api/channelsApi.js'
 import { selectChannelId } from '../../slices/modalSlice.js'
-
-import { useTranslation } from 'react-i18next'
 
 import toastify from '../../toast/toastify.js'
 

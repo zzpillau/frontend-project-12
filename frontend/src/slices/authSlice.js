@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { getAuthUsername } from '../utils/authData'
+import { getAuthUsername } from '../utils/authData.js'
 
 const initialState = {
   username: getAuthUsername() || null,

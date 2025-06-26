@@ -1,22 +1,20 @@
 import React from 'react'
-
 import { Provider as RollbarProvider, ErrorBoundary } from '@rollbar/react'
-import rollbarConfig from './rollbar/rollbarConfig.js'
-
 import { Provider as StoreProvider } from 'react-redux'
-import store from './store'
-
-import initSocket from './socket/socket.js'
-
-import i18next from 'i18next'
 import { initReactI18next, I18nextProvider } from 'react-i18next'
-import resources from './locales/index.js'
-
+import i18next from 'i18next'
 import leoFilter from 'leo-profanity'
+
+import rollbarConfig from './rollbar/rollbarConfig.js'
+import store from './store'
+import initSocket from './socket/socket.js'
+import resources from './locales/index.js'
 
 import App from '../src/components/App.jsx'
 
 const init = async () => {
+  initSocket(store)
+
   await i18next
     .use(initReactI18next)
     .init({
@@ -29,8 +27,6 @@ const init = async () => {
 
   leoFilter.add(leoFilter.getDictionary('ru'))
   leoFilter.add(leoFilter.getDictionary('en'))
-
-  initSocket(store)
 
   return (
     <React.StrictMode>

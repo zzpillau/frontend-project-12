@@ -1,9 +1,8 @@
 import { useLocation, Link } from 'react-router-dom'
-import routes from '../../routes/index.js'
-
 import { Navbar, Container } from 'react-bootstrap'
-
 import { useTranslation } from 'react-i18next'
+
+import routes from '../../routes/index.js'
 
 import AuthButton from './AuthButton.jsx'
 

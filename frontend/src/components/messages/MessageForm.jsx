@@ -1,18 +1,15 @@
 import { useEffect, useRef } from 'react'
-
 import { useSelector } from 'react-redux'
-
-import { selectUsername } from '../../slices/authSlice.js'
-import { selectActiveChannelId } from '../../slices/channelsSlice.js'
-
+import { useTranslation } from 'react-i18next'
+import { uniqueId } from 'lodash'
 import { useFormik } from 'formik'
 import { Button, Form } from 'react-bootstrap'
 import { ArrowRightSquare } from 'react-bootstrap-icons'
 
-import { useAddMessageMutation } from '../../api/messagesApi.js'
-import { useTranslation } from 'react-i18next'
+import { selectUsername } from '../../slices/authSlice.js'
+import { selectActiveChannelId } from '../../slices/channelsSlice.js'
 
-import { uniqueId } from 'lodash'
+import { useAddMessageMutation } from '../../api/messagesApi.js'
 
 const MessageForm = () => {
   const { t } = useTranslation()

@@ -1,7 +1,7 @@
 import { useContext } from 'react'
-import AuthContext from '../../contexts/index.js'
-
 import { useTranslation } from 'react-i18next'
+
+import AuthContext from '../../contexts/index.js'
 
 import { Button } from 'react-bootstrap'
 

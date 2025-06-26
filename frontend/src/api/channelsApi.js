@@ -1,10 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 import routes from '../routes/'
-
-import { setActiveChannelId } from '../slices/channelsSlice.js'
-
 import { getAuthToken } from '../utils/authData.js'
+import { setActiveChannelId } from '../slices/channelsSlice.js'
 
 export const channelsApi = createApi({
   reducerPath: 'channelsApi',

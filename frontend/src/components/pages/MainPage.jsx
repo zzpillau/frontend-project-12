@@ -1,13 +1,11 @@
+import { useTranslation } from 'react-i18next'
+import { Container, Row, Col } from 'react-bootstrap'
+
 import Channels from '../channels/Channels.jsx'
 import Messages from '../messages/Messages.jsx'
 import MessageForm from '../messages/MessageForm.jsx'
-
 import ActiveChannelInfo from '../channels/ActiveChannelInfo.jsx'
 import AddChannelButton from '../channels/AddChannelButton.jsx'
-
-import { Container, Row, Col } from 'react-bootstrap'
-
-import { useTranslation } from 'react-i18next'
 
 const MainPage = () => {
   const { t } = useTranslation()

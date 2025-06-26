@@ -1,17 +1,13 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
+import toastify from '../../toast/toastify.js'
+import { useTranslation } from 'react-i18next'
 import cn from 'classnames'
 
 import { useGetChannelsQuery } from '../../api/channelsApi.js'
-
 import { setActiveChannelId } from '../../slices/channelsSlice.js'
 import { selectActiveChannelId } from '../../slices/channelsSlice.js'
 import { actions } from '../../slices/modalSlice.js'
-
-import toastify from '../../toast/toastify.js'
-
-import { useTranslation } from 'react-i18next'
 
 import PrimaryChannelButton from './PrimaryChannelButton.jsx'
 import CustomChannelButton from './CustomChannelButton.jsx'

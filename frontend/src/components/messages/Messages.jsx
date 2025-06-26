@@ -1,15 +1,12 @@
 import { useRef, useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
+import leoFilter from 'leo-profanity'
 
 import { useGetMessagesQuery } from '../../api/messagesApi.js'
-
 import { selectActiveChannelId } from '../../slices/channelsSlice.js'
 
 import toastify from '../../toast/toastify.js'
-
-import { useTranslation } from 'react-i18next'
-
-import leoFilter from 'leo-profanity'
 
 const Messages = () => {
   const { t } = useTranslation()

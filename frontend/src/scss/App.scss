@@ -7,7 +7,6 @@ body {
   height: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  // padding: 2rem;
   text-align: center;
   width: 100%;
 }
@@ -17,7 +16,9 @@ body {
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
+
+  &:hover {
+    filter: drop-shadow(0 0 2em #ff1a76aa);
+  }
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #ff1a76aa);
-}
+
