@@ -33,7 +33,7 @@ const ActiveChannelInfo = () => {
         </b>
       </p>
       <span className="text-muted">
-        {t('messages', { count: messagesCount })}
+        {t('chat.messages', { count: messagesCount })}
       </span>
     </div>
   )

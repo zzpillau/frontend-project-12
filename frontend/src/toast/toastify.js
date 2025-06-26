@@ -2,9 +2,9 @@ import { toast } from 'react-toastify'
 
 const toastify = (t, type, notifCode) => {
   const errorMap = {
-    FETCH_ERROR: 'fetch_error',
-    PARSING_ERROR: 'parsing_error',
-    UNAUTHORIZED: 'unauthorized_error',
+    FETCH_ERROR: 'errors.fetch_error',
+    PARSING_ERROR: 'errors.parsing_error',
+    UNAUTHORIZED: 'errors.unauthorized_error',
   }
 
   const key = errorMap[notifCode] || notifCode

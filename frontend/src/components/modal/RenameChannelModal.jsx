@@ -20,7 +20,7 @@ const RenameChannelModal = ({ onClose, type }) => {
 
   const handleSubmit = async (values) => {
     await renameChannel({ id, name: values.name }).unwrap()
-    toastify(t, 'success', 'channel_renamed')
+    toastify(t, 'success', 'notif.renamed')
     onClose()
   }
 

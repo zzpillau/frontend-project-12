@@ -7,7 +7,7 @@ const CancelButton = ({ disabled, onClick }) => {
 
   return (
     <Button variant="secondary" className="me-2" disabled={disabled} onClick={onClick}>
-      {t('reject')}
+      {t('modals.reject')}
     </Button>
   )
 }

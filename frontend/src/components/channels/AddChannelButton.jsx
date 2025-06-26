@@ -32,7 +32,7 @@ const AddChannelButton = () => {
         onClick={openModal}
       >
         <PlusSquare size={20} />
-        <span className="visually-hidden">{t('plus')}</span>
+        <span className="visually-hidden">{t('chat.plus')}</span>
       </Button>
       <ModalLayout show={showModal} onHide={handleClose} type={modalType} />
     </>

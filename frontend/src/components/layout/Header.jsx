@@ -15,7 +15,7 @@ const Header = () => {
   return (
     <Navbar className="shadow-sm navbar navbar-expand-lg navbar-light bg-white">
       <Container>
-        <Link to="/" className="navbar-brand">{t('hexlet_chat')}</Link>
+        <Link to="/" className="navbar-brand">{t('titles.hexlet_chat')}</Link>
         {showLogin && <AuthButton />}
       </Container>
     </Navbar>

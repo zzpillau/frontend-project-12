@@ -11,7 +11,6 @@ const channelsSlice = createSlice({
   initialState,
   reducers: {
     setActiveChannelId: (state, { payload }) => {
-      console.log('🔥 УСТАНАВЛИВАЮ ID:', payload)
       state.activeChannelId = payload
     },
   },

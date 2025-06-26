@@ -18,7 +18,7 @@ const MainPage = () => {
         <Col className="col-4 col-md-2 border-end px-0 bg-light flex-column h-100 d-flex">
           <Row className="d-flex mt-1 justify-content-between mb-2 ps-4 pe-2 p-4">
             <Col xs="auto">
-              <b>{t('channels')}</b>
+              <b>{t('chat.channels')}</b>
             </Col>
             <Col xs="auto">
               <AddChannelButton />

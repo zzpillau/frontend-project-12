@@ -2,9 +2,9 @@ import { Card, Col, Image } from 'react-bootstrap'
 
 import tomato from '../../assets/tomato.png'
 
-import LoginForm from './LoginForm'
-
 import { useTranslation } from 'react-i18next'
+
+import LoginForm from './LoginForm'
 
 const LoginCard = () => {
   const { t } = useTranslation()
@@ -20,9 +20,9 @@ const LoginCard = () => {
         </Col>
       </Card.Body>
       <Card.Footer className="p-4 text-center">
-        <span>{t('has_no_account')}</span>
+        <span>{t('auth.has_no_account')}</span>
         {' '}
-        <a href="/signup">{t('registration')}</a>
+        <a href="/signup">{t('auth.registration')}</a>
       </Card.Footer>
     </Card>
   )

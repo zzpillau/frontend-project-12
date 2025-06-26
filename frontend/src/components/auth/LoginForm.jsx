@@ -68,7 +68,7 @@ const LoginForm = () => {
 
   return (
     <Form onSubmit={formik.handleSubmit}>
-      <h1 className="text-center mb-4">{t('login')}</h1>
+      <h1 className="text-center mb-4">{t('auth.login')}</h1>
       <Form.Group className="form-floating mb-3">
         <Form.Control
           onChange={formik.handleChange}
@@ -81,7 +81,7 @@ const LoginForm = () => {
           required
           ref={inputRef}
         />
-        <Form.Label htmlFor="username">{t('nickname')}</Form.Label>
+        <Form.Label htmlFor="username">{t('auth.nickname')}</Form.Label>
       </Form.Group>
       <Form.Group className="form-floating mb-3">
         <Form.Control
@@ -95,10 +95,10 @@ const LoginForm = () => {
           autoComplete="current-password"
           required
         />
-        <Form.Label htmlFor="password">{t('password')}</Form.Label>
-        <Form.Control.Feedback type="invalid">{t('invalid_password_or_name')}</Form.Control.Feedback>
+        <Form.Label htmlFor="password">{t('auth.password')}</Form.Label>
+        <Form.Control.Feedback type="invalid">{t('auth.invalid')}</Form.Control.Feedback>
       </Form.Group>
-      <SubmitAuthButton title={t('login')} />
+      <SubmitAuthButton title={t('auth.login')} />
     </Form>
   )
 }

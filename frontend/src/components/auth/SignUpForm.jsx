@@ -61,7 +61,7 @@ const SignUpForm = () => {
       catch (err) {
         console.error('Registration error occured', err)
         if (err.status === 409) {
-          setFieldError('username', t('user_exists'))
+          setFieldError('username', t('auth.user_exists'))
         }
       }
       finally {
@@ -72,7 +72,7 @@ const SignUpForm = () => {
 
   return (
     <Form onSubmit={formik.handleSubmit}>
-      <h1 className="text-center mb-4">{t('registration')}</h1>
+      <h1 className="text-center mb-4">{t('auth.registration')}</h1>
 
       <Form.Group className="form-floating mb-3">
         <Form.Control
@@ -85,7 +85,7 @@ const SignUpForm = () => {
           isInvalid={!!formik.errors.username}
           ref={inputRef}
         />
-        <Form.Label htmlFor="username">{t('username')}</Form.Label>
+        <Form.Label htmlFor="username">{t('auth.username')}</Form.Label>
         <Form.Control.Feedback type="invalid" tooltip>
           {formik.errors.username}
         </Form.Control.Feedback>
@@ -100,7 +100,7 @@ const SignUpForm = () => {
           name="password"
           isInvalid={!!formik.errors.password}
         />
-        <Form.Label htmlFor="password">{t('password')}</Form.Label>
+        <Form.Label htmlFor="password">{t('auth.password')}</Form.Label>
         <Form.Control.Feedback type="invalid" tooltip>
           {formik.errors.password}
         </Form.Control.Feedback>
@@ -115,12 +115,12 @@ const SignUpForm = () => {
           name="passwordConfirmation"
           isInvalid={!!formik.errors.passwordConfirmation}
         />
-        <Form.Label htmlFor="passwordConfirmation">{t('password_confirmation')}</Form.Label>
+        <Form.Label htmlFor="passwordConfirmation">{t('auth.password_confirmation')}</Form.Label>
         <Form.Control.Feedback type="invalid" tooltip>
           {formik.errors.passwordConfirmation}
         </Form.Control.Feedback>
       </Form.Group>
-      <SubmitAuthButton title={t('signup')} />
+      <SubmitAuthButton title={t('auth.signup')} />
     </Form>
   )
 }

@@ -11,7 +11,7 @@ const AuthButton = () => {
   const auth = useContext(AuthContext)
 
   return (
-    auth.loggedIn && <Button variant="primary" onClick={auth.logOut}>{t('logout')}</Button>
+    auth.loggedIn && <Button variant="primary" onClick={auth.logOut}>{t('auth.logout')}</Button>
   )
 }
 

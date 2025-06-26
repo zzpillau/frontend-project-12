@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { Provider as RollbarProvider, ErrorBoundary } from '@rollbar/react'
+import rollbarConfig from './rollbar/rollbarConfig.js'
 
 import { Provider as StoreProvider } from 'react-redux'
-
 import store from './store'
 
 import initSocket from './socket/socket.js'
@@ -17,13 +17,6 @@ import leoFilter from 'leo-profanity'
 import App from '../src/components/App.jsx'
 
 const init = async () => {
-  const rollbarConfig = {
-    accessToken: import.meta.env.VITE_ROLLBAR_TOKEN,
-    environment: 'production',
-    captureUncaught: true,
-    captureUnhandledRejections: true,
-  }
-
   await i18next
     .use(initReactI18next)
     .init({

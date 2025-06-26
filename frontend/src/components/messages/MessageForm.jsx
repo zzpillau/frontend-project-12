@@ -42,7 +42,6 @@ const MessageForm = () => {
         username: username,
       }
 
-      console.log('newMessage', newMessage)
       addMessage(newMessage)
       resetForm()
       inputRef.current?.focus()
@@ -56,11 +55,11 @@ const MessageForm = () => {
           onChange={formik.handleChange}
           className="border-0 p-0 ps-2 form-control"
           value={formik.values.body}
-          placeholder={t('input_message')}
+          placeholder={t('chat.input_message')}
           name="body"
           id="body"
           required
-          aria-label={t('new_message')}
+          aria-label={t('chat.new_message')}
           ref={inputRef}
         />
         <Button
@@ -70,7 +69,7 @@ const MessageForm = () => {
           disabled={formik.isSubmitting || !formik.values.body.length}
         >
           <ArrowRightSquare size={20} />
-          <span className="visually-hidden">{t('send')}</span>
+          <span className="visually-hidden">{t('chat.send')}</span>
         </Button>
       </Form.Group>
     </Form>

@@ -7,7 +7,7 @@ const SubmitButton = ({ disabled, form }) => {
 
   return (
     <Button type="submit" variant="primary" disabled={disabled} form={form}>
-      {t('send')}
+      {t('chat.send')}
     </Button>
   )
 }

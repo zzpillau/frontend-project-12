@@ -22,7 +22,7 @@ const AddChannelModal = ({ onClose, type }) => {
     if (newChannel?.name?.trim()) {
       const result = await addChannel(newChannel).unwrap()
       dispatch(setActiveChannelId(result.id))
-      toastify(t, 'success', 'channel_added')
+      toastify(t, 'success', 'notif.added')
       onClose()
     }
   }

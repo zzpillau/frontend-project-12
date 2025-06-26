@@ -20,7 +20,7 @@ const RemoveChannelModal = ({ onClose }) => {
   const handleSubmit = async () => {
     try {
       await removeChannel(id).unwrap()
-      toastify(t, 'success', 'channel_removed')
+      toastify(t, 'success', 'notif.removed')
       onClose()
     }
     catch (err) {
@@ -31,7 +31,7 @@ const RemoveChannelModal = ({ onClose }) => {
 
   return (
     <>
-      <p className="lead">{t('confirm')}</p>
+      <p className="lead">{t('modals.confirm')}</p>
       <div className="d-flex justify-content-end">
         <CancelButton disabled={isLoading} onClick={onClose} />
         <DeleteButton disabled={isLoading} onClick={handleSubmit} />

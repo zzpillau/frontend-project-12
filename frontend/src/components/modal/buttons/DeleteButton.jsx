@@ -7,7 +7,7 @@ const DeleteButton = ({ disabled, onClick }) => {
 
   return (
     <Button variant="danger" disabled={disabled} onClick={onClick}>
-      {t('remove')}
+      {t('chat.remove')}
     </Button>
   )
 }

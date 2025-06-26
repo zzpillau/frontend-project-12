@@ -8,9 +8,7 @@ const Layout = () => {
     <Container fluid className="h-100 w-100 px-0">
       <div id="chat" className="h-100 d-flex flex-column">
         <Header />
-        <Container fluid className="h-100 d-flex flex-column justify-content-center align-items-center px-0">
-          <Outlet />
-        </Container>
+        <Outlet />
       </div>
     </Container>
   )
