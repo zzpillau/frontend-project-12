@@ -17,6 +17,11 @@ export default defineConfig([
   { files: ['**/*.{js,mjs,cjs,jsx}'], languageOptions: { globals: globals.browser } },
   pluginReact.configs.flat.recommended,
   { rules: {
+    '@stylistic/no-multiple-empty-lines': ['error', {
+      max: 1,
+      maxEOF: 0,
+      maxBOF: 0,
+    }],
     'react/react-in-jsx-scope': 'off',
     'no-unused-vars': 'warn',
     'react/prop-types': 'off',
