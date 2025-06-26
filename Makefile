@@ -20,11 +20,5 @@ build:
 	rm -rf frontend/dist
 	npm run build
 
-kill-5001:
-	kill -9 $(lsof -t -i :5001)
-
-kill-5002:
-	kill -9 $(lsof -t -i :5002)
-
 fix:
 	make -C frontend fix

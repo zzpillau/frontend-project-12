@@ -5,8 +5,7 @@ import { useTranslation } from 'react-i18next'
 import cn from 'classnames'
 
 import { useGetChannelsQuery } from '../../api/channelsApi.js'
-import { setActiveChannelId } from '../../slices/channelsSlice.js'
-import { selectActiveChannelId } from '../../slices/channelsSlice.js'
+import { setActiveChannelId, selectActiveChannelId } from '../../slices/channelsSlice.js'
 import { actions } from '../../slices/modalSlice.js'
 
 import PrimaryChannelButton from './PrimaryChannelButton.jsx'

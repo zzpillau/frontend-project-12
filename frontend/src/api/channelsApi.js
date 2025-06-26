@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 import routes from '../routes/'
-import { getAuthToken } from '../utils/authData.js'
+import { getAuthData } from '../utils/authData.js'
 import { setActiveChannelId } from '../slices/channelsSlice.js'
 
 export const channelsApi = createApi({
@@ -9,7 +9,7 @@ export const channelsApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: routes.channels(),
     prepareHeaders: (headers) => {
-      const token = getAuthToken()
+      const { token } = getAuthData()
       if (token) {
         headers.set('Authorization', `Bearer ${token}`)
       }

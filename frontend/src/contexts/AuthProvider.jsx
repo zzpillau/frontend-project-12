@@ -1,15 +1,16 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 
 import AuthContext from '.'
-import { getAuthToken, removeAuthToken } from '../utils/authData.js'
+import { getAuthData, removeAuthData } from '../utils/authData.js'
 
 const AuthProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const token = getAuthToken()
-    if (token) {
+    const auth = getAuthData()
+
+    if (auth?.token) {
       setLoggedIn(true)
     }
     setLoading(false)
@@ -19,12 +20,14 @@ const AuthProvider = ({ children }) => {
     setLoggedIn(true)
   }
   const logOut = () => {
-    removeAuthToken()
+    removeAuthData()
     setLoggedIn(false)
   }
 
+  const memoValue = useMemo(() => ({ loggedIn, loading, logIn, logOut }), [loggedIn, loading])
+
   return (
-    <AuthContext.Provider value={{ loggedIn, loading, logIn, logOut }}>
+    <AuthContext.Provider value={memoValue}>
       {children}
     </AuthContext.Provider>
   )
