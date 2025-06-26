@@ -1,7 +1,8 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import routes from '../routes/index.js'
+
 import AuthProvider from '../contexts/AuthProvider.jsx'
 import PrivateRoute from './auth/PrivateRoute.jsx'
-
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import LoginPage from './pages/LoginPage.jsx'
 import PageNotFound from './pages/PageNotFound.jsx'
@@ -21,8 +22,8 @@ const App = () => {
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route path="*" element={<PageNotFound />} />
+          <Route path={routes.mainPage()} element={<Layout />}>
+            <Route path={routes.notFoundPage()} element={<PageNotFound />} />
             <Route
               index
               element={(
@@ -31,8 +32,8 @@ const App = () => {
                 </PrivateRoute>
               )}
             />
-            <Route path="login" element={<LoginPage />} />
-            <Route path="signup" element={<SignUpPage />} />
+            <Route path={routes.loginPage()} element={<LoginPage />} />
+            <Route path={routes.signupPage()} element={<SignUpPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

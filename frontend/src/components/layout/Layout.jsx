@@ -7,7 +7,9 @@ const Layout = () => {
       <div className="h-100" id="chat">
         <div className="h-100 d-flex flex-column">
           <Header />
-          <Outlet />
+          <div className="h-100 d-flex flex-column justify-content-center align-items-center">
+            <Outlet />
+          </div>
         </div>
       </div>
     </div>
