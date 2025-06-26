@@ -1,7 +1,7 @@
 import { Card, Col, Image } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
 
-import tomato from '../../assets/tomato.png'
+import loginCat from '../../assets/loginCat.png'
 
 import LoginForm from './LoginForm.jsx'
 
@@ -12,7 +12,7 @@ const LoginCard = () => {
     <Card className="shadow-sm">
       <Card.Body className="row p-5">
         <Col className="col-12 col-md-6 d-flex align-items-center justify-content-center">
-          <Image src={tomato} alt="tomatoLogo" className="logo logo-spin" />
+          <Image src={loginCat} alt="login" className="mascot" />
         </Col>
         <Col>
           <LoginForm />
