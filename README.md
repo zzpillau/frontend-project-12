@@ -3,7 +3,7 @@
 ### Hexlet status & Maintainability
 [![Actions Status](https://github.com/zzpillau/frontend-project-12/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/zzpillau/frontend-project-12/actions)
 
-![Maintainability](https://sonarcloud.io/api/project_badges/measure?project=zzpillau_frontend-project-12&metric=sqale_rating)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=zzpillau_frontend-project-12&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=zzpillau_frontend-project-12)
 
 ## 📌 Description
 
