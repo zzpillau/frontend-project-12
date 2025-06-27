@@ -49,7 +49,8 @@ const ru = {
     errors: {
       fetch_error: 'Ошибка соединения',
       parsing_error: 'Ошибка загрузки данных',
-      unauthorized_error: 'Неизвестная ошибка',
+      unexpected_error: 'Неизвестная ошибка',
+      unauthorized_error: ' Ошибка доступа. Авторизуйтесь повторно',
     },
     texts: {
       page_not_found: 'Страница не найдена',

@@ -1,12 +1,14 @@
-import { useEffect } from 'react'
+import { useEffect, useContext } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import toastify from '../../toast/toastify.js'
 import { useTranslation } from 'react-i18next'
 import cn from 'classnames'
 
 import { useGetChannelsQuery } from '../../api/channelsApi.js'
 import { setActiveChannelId, selectActiveChannelId } from '../../slices/channelsSlice.js'
 import { actions } from '../../slices/modalSlice.js'
+import AuthContext from '../../contexts/index.js'
+
+import toastify from '../../toast/toastify.js'
 
 import PrimaryChannelButton from './PrimaryChannelButton.jsx'
 import CustomChannelButton from './CustomChannelButton.jsx'
@@ -15,6 +17,20 @@ const Channels = () => {
   const { t } = useTranslation()
 
   const { data: channels = [], isError, error } = useGetChannelsQuery()
+
+  const auth = useContext(AuthContext)
+
+  useEffect(() => {
+    if (isError) {
+      if (error.status === 401) {
+        toastify(t, 'error', 'errors.unauthorized_error')
+        auth.logOut()
+      }
+      else {
+        console.error(`Unexpected error (${error.status}):`, error)
+      }
+    }
+  }, [isError, error])
 
   const dispatch = useDispatch()
 
@@ -31,12 +47,6 @@ const Channels = () => {
   }
 
   const activeChannelId = useSelector(selectActiveChannelId)
-
-  useEffect(() => {
-    if (isError) {
-      toastify(t, 'error', error.status)
-    }
-  }, [isError, error])
 
   return (
     <ul

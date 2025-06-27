@@ -4,7 +4,8 @@ const toastify = (t, type, notifCode) => {
   const errorMap = {
     FETCH_ERROR: 'errors.fetch_error',
     PARSING_ERROR: 'errors.parsing_error',
-    UNAUTHORIZED: 'errors.unauthorized_error',
+    Unauthorized: 'errors.unauthorized_error',
+    unexpected: 'errors.unexpected_error',
   }
 
   const key = errorMap[notifCode] || notifCode

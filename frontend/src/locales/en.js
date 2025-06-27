@@ -49,7 +49,8 @@ const en = {
     errors: {
       fetch_error: 'Connection failed',
       parsing_error: 'Error loading data',
-      unauthorized_error: 'Unexpected error',
+      unexpected_error: 'Unexpected error',
+      unauthorized: 'Authentication error. Please log in again',
     },
     texts: {
       page_not_found: 'Page not found',
