@@ -1,66 +1,9 @@
+import ru from './ru.js'
+import en from './en.js'
+
 const resources = {
-  ru: {
-    translation: {
-      auth: {
-        login: 'Войти',
-        logout: 'Выйти',
-        nickname: 'Ваш ник',
-        username: 'Имя пользователя',
-        password: 'Пароль',
-        password_confirmation: 'Подтвердите пароль',
-        invalid: 'Неверные имя пользователя или пароль',
-        has_no_account: 'Нет аккаунта?',
-        registration: 'Регистрация',
-        signup: 'Зарегистрироваться',
-        user_exists: 'Такой пользователь уже существует',
-        name_length_hint: 'От 3 до 20 символов',
-        password_length_hint: 'Не менее 6 символов',
-        passwords_match: 'Пароли должны совпадать',
-        required: 'Обязательное поле',
-        loading: 'Авторизация выполняется...',
-      },
-      chat: {
-        channels: 'Каналы',
-        management: 'Управление каналом',
-        rename: 'Переименовать',
-        remove: 'Удалить',
-        messages_one: '{{count}} сообщение',
-        messages_few: '{{count}} сообщения',
-        messages_many: '{{count}} сообщений',
-        input_message: 'Введите сообщение...',
-        new_message: 'Новое сообщение',
-        send: 'Отправить',
-        plus: '+',
-      },
-      modals: {
-        add: 'Добавить канал',
-        rename: 'Переименовать канал',
-        remove: 'Удалить канал',
-        confirm: 'Уверены?',
-        reject: 'Отменить',
-        channel_name: 'Имя канала',
-        must_be_unique: 'Должно быть уникальным',
-      },
-      notif: {
-        added: 'Канал создан',
-        removed: 'Канал удалён',
-        renamed: 'Канал переименован',
-      },
-      errors: {
-        fetch_error: 'Ошибка соединения',
-        parsing_error: 'Ошибка загрузки данных',
-        unauthorized_error: 'Неизвестная ошибка',
-      },
-      texts: {
-        page_not_found: 'Страница не найдена',
-        you_can_go: 'Но вы можете перейти',
-        to_main_page: 'на главную страницу',
-      },
-      titles: {
-        hexlet_chat: 'Hexlet Chat',
-      },
-    },
-  },
+  ru,
+  en,
 }
 
 export default resources

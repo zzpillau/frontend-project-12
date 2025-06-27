@@ -1,0 +1,65 @@
+const en = {
+  translation: {
+    auth: {
+      login: 'Log in',
+      logout: 'Log out',
+      nickname: 'Nickname',
+      username: 'Username',
+      password: 'Password',
+      password_confirmation: 'Confirm password',
+      invalid: 'Invalid username or password',
+      has_no_account: 'Don\'t have an account?',
+      registration: 'Registration',
+      signup: 'Sign up',
+      user_exists: 'User already exists',
+      name_length_hint: 'From 3 to 20 characters',
+      password_length_hint: 'Minimum 6 characters',
+      passwords_match: 'Passwords must match',
+      required: 'Required',
+      loading: 'Signing in...',
+    },
+    chat: {
+      channels: 'Channels',
+      management: 'Channels management',
+      rename: 'Rename',
+      remove: 'Delete',
+      messages_zero: '{{count}} messages',
+      messages_one: '{{count}} message',
+      messages_few: '{{count}} messages',
+      messages_many: '{{count}} messages',
+      input_message: 'Type a message...',
+      new_message: 'New message',
+      send: 'Send',
+      plus: '+',
+    },
+    modals: {
+      add: 'Add channel',
+      rename: 'Rename channel',
+      remove: 'Delete channel',
+      confirm: 'Are you sure?',
+      reject: 'Cancel',
+      channel_name: 'Channel name',
+      must_be_unique: 'Must be unique',
+    },
+    notif: {
+      added: 'Channel  added',
+      removed: 'Channel  removed',
+      renamed: 'Channel  renamed',
+    },
+    errors: {
+      fetch_error: 'Connection failed',
+      parsing_error: 'Error loading data',
+      unauthorized_error: 'Unexpected error',
+    },
+    texts: {
+      page_not_found: 'Page not found',
+      you_can_go: 'You can go back',
+      to_main_page: 'to the homepage',
+    },
+    titles: {
+      hexlet_chat: 'Hexlet Chat',
+    },
+  },
+}
+
+export default en
