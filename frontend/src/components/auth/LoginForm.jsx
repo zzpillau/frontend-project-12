@@ -62,7 +62,7 @@ const LoginForm = () => {
   })
 
   return (
-    <Form onSubmit={formik.handleSubmit}>
+    <Form autoComplete="off" onSubmit={formik.handleSubmit}>
       <h1 className="text-center mb-4">{t('auth.login')}</h1>
       <Form.Group className="form-floating mb-3">
         <Form.Control
@@ -72,7 +72,7 @@ const LoginForm = () => {
           name="username"
           id="username"
           isInvalid={authFailed}
-          autoComplete="username"
+          autoComplete="off"
           required
           ref={inputRef}
         />
@@ -87,7 +87,7 @@ const LoginForm = () => {
           name="password"
           id="password"
           isInvalid={authFailed}
-          autoComplete="current-password"
+          autoComplete="off"
           required
         />
         <Form.Label htmlFor="password">{t('auth.password')}</Form.Label>

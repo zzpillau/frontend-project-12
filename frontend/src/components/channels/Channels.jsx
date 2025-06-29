@@ -8,7 +8,7 @@ import { setActiveChannelId, selectActiveChannelId } from '../../slices/channels
 import { actions } from '../../slices/modalSlice.js'
 import AuthContext from '../../contexts/index.js'
 
-import toastify from '../../toast/toastify.js'
+import handleQueryErrors from '../../utils/handleQueryErrors.js'
 
 import PrimaryChannelButton from './PrimaryChannelButton.jsx'
 import CustomChannelButton from './CustomChannelButton.jsx'
@@ -22,13 +22,7 @@ const Channels = () => {
 
   useEffect(() => {
     if (isError) {
-      if (error.status === 401) {
-        toastify(t, 'error', 'errors.unauthorized_error')
-        auth.logOut()
-      }
-      else {
-        console.error(`Unexpected error (${error.status}):`, error)
-      }
+      handleQueryErrors(error, auth, t)
     }
   }, [isError, error])
 

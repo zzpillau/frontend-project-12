@@ -65,7 +65,7 @@ const SignUpForm = () => {
   })
 
   return (
-    <Form onSubmit={formik.handleSubmit}>
+    <Form autoComplete="off" onSubmit={formik.handleSubmit}>
       <h1 className="text-center mb-4">{t('auth.registration')}</h1>
 
       <Form.Group className="form-floating mb-3">
@@ -76,6 +76,7 @@ const SignUpForm = () => {
           value={formik.values.username}
           placeholder="username"
           name="username"
+          autoComplete="off"
           isInvalid={!!formik.errors.username}
           ref={inputRef}
         />
@@ -92,6 +93,7 @@ const SignUpForm = () => {
           value={formik.values.password}
           placeholder="password"
           name="password"
+          autoComplete="off"
           isInvalid={!!formik.errors.password}
         />
         <Form.Label htmlFor="password">{t('auth.password')}</Form.Label>
@@ -107,6 +109,7 @@ const SignUpForm = () => {
           value={formik.values.passwordConfirmation}
           placeholder="passwordConfirmation"
           name="passwordConfirmation"
+          autoComplete="off"
           isInvalid={!!formik.errors.passwordConfirmation}
         />
         <Form.Label htmlFor="passwordConfirmation">{t('auth.password_confirmation')}</Form.Label>

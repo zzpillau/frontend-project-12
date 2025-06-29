@@ -1,12 +1,12 @@
 import { useRef, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
+
 import { useFormik } from 'formik'
 import { Form } from 'react-bootstrap'
 
 import { useGetChannelsQuery } from '../../api/channelsApi.js'
 
 import { channelNameSchema } from '../../validation/validationSchemas.js'
-import toastify from '../../toast/toastify.js'
 
 const AddChannelForm = ({ onSubmit }) => {
   const { t } = useTranslation()
@@ -32,8 +32,8 @@ const AddChannelForm = ({ onSubmit }) => {
         resetForm()
       }
       catch (err) {
-        console.error('Channel add error occured', err)
-        toastify(t, 'error', err.status)
+        console.error('AddChannelForm submit failed', err)
+        throw err
       }
       finally {
         setSubmitting(false)
@@ -48,6 +48,7 @@ const AddChannelForm = ({ onSubmit }) => {
       id="add"
       onSubmit={formik.handleSubmit}
       noValidate
+      autoComplete="off"
     >
       <Form.Group>
         <Form.Control
@@ -57,6 +58,7 @@ const AddChannelForm = ({ onSubmit }) => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.name}
+          autoComplete="off"
           isInvalid={formik.touched.name && formik.errors.name}
           disabled={formik.isSubmitting}
           ref={inputRef}

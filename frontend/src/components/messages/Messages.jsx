@@ -7,7 +7,7 @@ import { useGetMessagesQuery } from '../../api/messagesApi.js'
 import { selectActiveChannelId } from '../../slices/channelsSlice.js'
 import AuthContext from '../../contexts/index.js'
 
-import toastify from '../../toast/toastify.js'
+import handleQueryErrors from '../../utils/handleQueryErrors.js'
 
 const Messages = () => {
   const { t } = useTranslation()
@@ -18,13 +18,7 @@ const Messages = () => {
 
   useEffect(() => {
     if (isError) {
-      if (error.status === 401) {
-        toastify(t, 'error', 'errors.unauthorized_error')
-        auth.logOut()
-      }
-      else {
-        console.error(`Unexpected error (${error.status}):`, error)
-      }
+      handleQueryErrors(error, auth, t)
     }
   }, [isError, error])
 

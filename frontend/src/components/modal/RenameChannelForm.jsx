@@ -8,7 +8,6 @@ import { useGetChannelsQuery } from '../../api/channelsApi.js'
 import { selectChannelName } from '../../slices/modalSlice.js'
 
 import { channelNameSchema } from '../../validation/validationSchemas.js'
-import toastify from '../../toast/toastify.js'
 
 const RenameChannelForm = ({ onSubmit }) => {
   const { t } = useTranslation()
@@ -36,8 +35,8 @@ const RenameChannelForm = ({ onSubmit }) => {
         resetForm()
       }
       catch (err) {
-        console.error('Channel rename error occured', err)
-        toastify(t, 'error', err.status)
+        console.error('RenameChannelForm submit failed', err)
+        throw err
       }
       finally {
         setSubmitting(false)
@@ -52,6 +51,7 @@ const RenameChannelForm = ({ onSubmit }) => {
       id="rename"
       onSubmit={formik.handleSubmit}
       noValidate
+      autoComplete="off"
     >
       <Form.Group>
         <Form.Control
@@ -61,6 +61,7 @@ const RenameChannelForm = ({ onSubmit }) => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.name}
+          autoComplete="off"
           isInvalid={formik.touched.name && formik.errors.name}
           disabled={formik.isSubmitting}
           ref={inputRef}
